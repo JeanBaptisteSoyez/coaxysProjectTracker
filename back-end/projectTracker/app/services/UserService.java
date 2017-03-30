@@ -2,6 +2,7 @@ package services;
 
 import models.Project;
 import models.User;
+import play.mvc.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 /**
  * Created by formation on 30/03/17.
  */
-public class UserService {
+public class UserService extends Controller {
 
     public static User createUser(String name, String role, String mail, String password){
         List<Project> projects = new ArrayList<>();

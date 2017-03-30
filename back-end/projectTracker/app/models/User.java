@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by formation04 on 29/03/17.
  */
-@Entity
+@Entity(name = "User")
 public class User extends Model {
 
     @Required
