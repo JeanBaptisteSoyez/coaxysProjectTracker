@@ -41,5 +41,5 @@ public class User extends Model {
         this.password = password;
         this.projects = projects;
     }
-    
+
 }

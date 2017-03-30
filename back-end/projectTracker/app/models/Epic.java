@@ -28,4 +28,8 @@ public class Epic extends Model {
         this.project = project;
     }
 
+    public Epic(String name, List<Story> stories) {
+        this.name = name;
+        this.stories = stories;
+    }
 }
