@@ -28,4 +28,11 @@ public class Sprint extends Model {
     @OneToMany
     public List<Status> statuses;
 
+    public Sprint(int number, Date startDate, Date startEnd, List<Status> statuses) {
+        this.number = number;
+        this.startDate = startDate;
+        this.startEnd = startEnd;
+        this.statuses = statuses;
+    }
+
 }

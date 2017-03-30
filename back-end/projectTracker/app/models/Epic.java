@@ -22,4 +22,10 @@ public class Epic extends Model {
     @ManyToOne
     public Project project;
 
+    public Epic(String name, List<Story> stories, Project project) {
+        this.name = name;
+        this.stories = stories;
+        this.project = project;
+    }
+
 }

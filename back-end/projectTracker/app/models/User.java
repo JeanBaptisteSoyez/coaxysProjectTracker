@@ -34,4 +34,12 @@ public class User extends Model {
     @ManyToMany
     public List<Project> projects;
 
+    public User(String name, String role, String mail, String password, List<Project> projects) {
+        this.name = name;
+        this.role = role;
+        this.mail = mail;
+        this.password = password;
+        this.projects = projects;
+    }
+    
 }

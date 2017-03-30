@@ -30,4 +30,12 @@ public class Status extends Model {
     @ManyToOne
     public Sprint sprint;
 
+    public Status(String label, String remarks, Date date, Task task, Sprint sprint) {
+        this.label = label;
+        this.remarks = remarks;
+        this.date = date;
+        this.task = task;
+        this.sprint = sprint;
+    }
+
 }

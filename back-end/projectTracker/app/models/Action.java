@@ -4,6 +4,7 @@ package models;
  * Created by formation04 on 29/03/17.
  */
 public enum Action {
+
     /**
      * INTRA_REGRESS : a regress occurring on a task in a single sprint,
      * INTA_REGRESS : a regress occurring on a task in two different sprints,
