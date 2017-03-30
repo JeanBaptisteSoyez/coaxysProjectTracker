@@ -17,6 +17,24 @@
                 }
             });
         });
+        $('#loadComplexUsers').click(function () {
+            $.ajax({
+                url: '/user/complexindexasync',
+                dataType: 'html',
+                success: function (data) {
+                    $('#target').html(data);
+                }
+            });
+        });
+        $('#loadUsersAsyncCtrl').click(function () {
+            $.ajax({
+                url: '/userasync/index',
+                dataType: 'html',
+                success: function (data) {
+                    $('#target').html(data);
+                }
+            });
+        });
     });
 
 });
