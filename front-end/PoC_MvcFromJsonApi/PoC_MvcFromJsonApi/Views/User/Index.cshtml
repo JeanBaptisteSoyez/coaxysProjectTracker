@@ -1,0 +1,17 @@
+﻿@using PoC_MvcFromJsonApi.Models
+@model List<User>
+@{
+    ViewBag.Title = "PoC";
+}
+
+<h2>Sync data from REST API</h2>
+
+@foreach (var user in Model)
+{
+    <div>@user.ID => @user.Name</div>
+}
+
+<h2>Async data from REST API</h2>
+
+<div id="target"></div>
+<button id="loadUsers">Load users...</button>
