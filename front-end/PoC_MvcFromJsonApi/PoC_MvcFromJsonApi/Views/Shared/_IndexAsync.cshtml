@@ -1,0 +1,16 @@
+﻿@using PoC_MvcFromJsonApi.Models
+@model List<User>
+
+@foreach (var user in Model)
+{
+    <div>@user.ID => @user.Name</div>
+    if (user.Roles != null)
+    {
+        <ul>
+            @foreach (string role in user.Roles)
+            {
+                <li>@role</li>
+            }
+        </ul>
+    }
+}

@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PoC_MvcFromJsonApi.Models;
 using System;
 using System.Collections.Generic;
@@ -13,34 +14,6 @@ namespace PoC_MvcFromJsonApi.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
-        //public ActionResult Index()
-        //{
-        //Uri apiUrl = new Uri("http://cpayen.net/api/user.json");
-        //List<User> Users = new List<User>();
-
-        //List<User> Users = new List<User>();
-        /*var syncClient = new WebClient();
-        var content = syncClient.DownloadString("http://cpayen.net/api/user.json");
-        var userList = JsonConvert.DeserializeObject<List<User>>(content);*/
-        /*foreach (string userStr in userList)
-        {
-            Users.Add(new User(userStr));
-        }*/
-
-        /*WebClient wc = new WebClient();
-        wc.OpenReadCompleted += (o, a) =>
-        {
-            var userList = JsonConvert.DeserializeObject<List<string>>(a.Result.ToString());
-            foreach (string userStr in userList)
-            {
-                Users.Add(new User(userStr));
-            }
-        };
-        wc.OpenReadAsync(apiUrl);*/
-
-        //return View(userList);
-        //}
 
         private UserService service = new UserService();
 
@@ -57,19 +30,34 @@ namespace PoC_MvcFromJsonApi.Controllers
                 await service.GetUsers()
             );
         }
+
+        public async Task<ActionResult> ComplexIndexAsync()
+        {
+            return PartialView("_IndexAsync",
+                await service.GetComplexUsers()
+            );
+        }
     }
 
     public class UserService
     {
-        readonly string baseUri = "http://cpayen.net/api/user.json";
-
         public async Task<List<User>> GetUsers()
         {
-            string uri = baseUri;
+            string uri = "http://cpayen.net/api/user.json";
             using (HttpClient httpClient = new HttpClient())
             {
-                Task<String> response = httpClient.GetStringAsync(uri);
-                return JsonConvert.DeserializeObject<List<User>>(response.Result);
+                var response = await httpClient.GetStringAsync(uri);
+                return JsonConvert.DeserializeObject<List<User>>(response);
+            }
+        }
+
+        public async Task<List<User>> GetComplexUsers()
+        {
+            string uri = "http://cpayen.net/api/complex.json";
+            using (HttpClient httpClient = new HttpClient())
+            {
+                var response = await httpClient.GetStringAsync(uri);
+                return JsonConvert.DeserializeObject<List<User>>(response);
             }
         }
     }
