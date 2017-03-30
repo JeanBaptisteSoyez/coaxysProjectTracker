@@ -31,4 +31,13 @@ public class Task extends Model {
     @ManyToOne
     public Story story;
 
+    public Task(String name, String process, String results, String parameters, List<Status> statuses, Story story) {
+        this.name = name;
+        this.process = process;
+        this.results = results;
+        this.parameters = parameters;
+        this.statuses = statuses;
+        this.story = story;
+    }
+
 }

@@ -32,4 +32,12 @@ public class StatusWatch extends Model {
     @Column(nullable = false)
     public Date date;
 
+    public StatusWatch(Task task, Status status, Sprint sprint, Action action, Date date) {
+        this.task = task;
+        this.status = status;
+        this.sprint = sprint;
+        this.action = action;
+        this.date = date;
+    }
+
 }

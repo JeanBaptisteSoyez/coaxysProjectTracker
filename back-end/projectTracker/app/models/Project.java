@@ -21,4 +21,9 @@ public class Project extends Model {
     @OneToMany
     public List<Epic> epics;
 
+    public Project(String name, List<Epic> epics) {
+        this.name = name;
+        this.epics = epics;
+    }
+
 }

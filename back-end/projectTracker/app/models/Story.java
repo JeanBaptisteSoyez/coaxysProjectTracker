@@ -25,4 +25,11 @@ public class Story extends Model {
     @ManyToOne
     public Epic epic;
 
+    public Story(String name, Boolean isActive, List<Task> tasks, Epic epic) {
+        this.name = name;
+        this.isActive = isActive;
+        this.tasks = tasks;
+        this.epic = epic;
+    }
+
 }
