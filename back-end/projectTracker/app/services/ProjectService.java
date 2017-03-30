@@ -18,19 +18,24 @@ public class ProjectService {
         return project;
     }
 
-    public static Project getProject(String name) {
+    public static Project getProjectByName(String name) {
         Project project = Project.find("name = ?1", name).first();
         return project;
     }
 
-    public static Project updateProject(String name) {
-        Project project = getProject(name);
+    public static Project getProjectById(int idProject) {
+        Project project = Project.find("idProject = ?1", idProject).first();
+        return project;
+    }
+
+    public static Project updateProject(int idProject, String name) {
+        Project project = getProjectById(idProject);
         project.name = name;
         return project;
     }
 
-    public static void deleteProject(String name) {
-        Project project = getProject(name);
+    public static void deleteProject(int idProject) {
+        Project project = getProjectById(idProject);
         project.delete();
     }
 
