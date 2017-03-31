@@ -1,6 +1,7 @@
 package services;
 
 import models.Epic;
+import models.Project;
 import models.Story;
 
 import java.util.ArrayList;
@@ -11,26 +12,32 @@ import java.util.List;
  */
 public class EpicService {
 
-    public static Epic createEpic(String name) {
+    public static Epic createEpic(String name, int idProject) {
+        Project project = ProjectService.getProjectById(idProject);
         List<Story> stories = new ArrayList<>();
-        Epic epic = new Epic(name, stories);
+        Epic epic = new Epic(name, stories, project);
         epic.save();
         return epic;
     }
 
-    public static Epic getEpic(String name) {
+    public static Epic getEpicByName(String name) {
         Epic epic = Epic.find("name = ?1", name).first();
         return epic;
     }
 
-    public static Epic updateEpic(String name) {
-        Epic epic = getEpic(name);
-        epic.name = name;
+    public static Epic getEpicById(int idEpic){
+        Epic epic = Epic.find("idEpic = ?1", idEpic).first();
         return epic;
     }
 
-    public static void deleteEpic(String name) {
-        Epic epic = getEpic(name);
+    public static Epic updateEpic(int idEpic, String newName) {
+        Epic epic = getEpicById(idEpic);
+        epic.name = newName;
+        return epic;
+    }
+
+    public static void deleteEpic(int idEpic) {
+        Epic epic = getEpicById(idEpic);
         epic.delete();
     }
 

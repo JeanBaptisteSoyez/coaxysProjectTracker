@@ -21,17 +21,19 @@ public class Sprint extends Model {
     @Required
     @Column(nullable = false)
     public Date startDate;
-    @Required
-    @Column(nullable = false)
-    public Date startEnd;
+    public Date endDate;
 
     @OneToMany
     public List<Status> statuses;
 
-    public Sprint(int number, Date startDate, Date startEnd, List<Status> statuses) {
+    public Sprint(){
+        //TO DO
+    }
+
+    public Sprint(int number, Date startDate, Date endDate, List<Status> statuses) {
         this.number = number;
         this.startDate = startDate;
-        this.startEnd = startEnd;
+        this.endDate = endDate;
         this.statuses = statuses;
     }
 
