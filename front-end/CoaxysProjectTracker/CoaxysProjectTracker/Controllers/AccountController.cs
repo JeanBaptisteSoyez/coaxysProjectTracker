@@ -33,8 +33,11 @@ namespace CoaxysProjectTracker.Controllers
             {
                 return View(model);
             }
-
-            var user = await API.LogUserInAsync(model.Email, model.Password);
+            
+            var user = await API.PostAsync<User>("login1.json", new {
+                email = model.Email,
+                password = model.Password
+            });
 
             //TODO Get user from service
             //if (new UserManager().IsValid(username, password))
