@@ -1,0 +1,29 @@
+﻿@using CoaxysProjectTracker.Entities
+@model List<User>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Utilisateurs</h2>
+
+<table class="table">
+    <tr>
+        <th>Nom</th>
+        <th>Adresse email</th>
+        <th>Role</th>
+        <th></th>
+    </tr>
+    @foreach (User user in Model)
+    {
+        <tr>
+            <td>@user.Name</td>
+            <td>@user.Email</td>
+            <td>@user.Role</td>
+            <td class="text-right">
+                <button class="btn btn-default">?</button>
+            </td>
+        </tr>
+    }
+</table>
+
+
