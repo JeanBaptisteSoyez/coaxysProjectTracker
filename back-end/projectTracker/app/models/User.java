@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Created by formation04 on 29/03/17.
  */
-@Entity
+@Entity(name = "User")
 public class User extends Model {
 
     @Required
@@ -25,7 +25,7 @@ public class User extends Model {
     @Required
     @Email
     @Column (nullable = false)
-    public String mail;
+    public String email;
     @Required
     @Password
     @Column (nullable = false)
@@ -34,12 +34,19 @@ public class User extends Model {
     @ManyToMany
     public List<Project> projects;
 
-    public User(String name, String role, String mail, String password, List<Project> projects) {
+    public User(String name, String role, String email, String password, List<Project> projects) {
         this.name = name;
         this.role = role;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
         this.projects = projects;
+    }
+
+    public User(String name, String role, String email, String password) {
+        this.name = name;
+        this.role = role;
+        this.email = email;
+        this.password = password;
     }
 
 }

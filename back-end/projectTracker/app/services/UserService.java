@@ -19,7 +19,7 @@ public class UserService {
     }
 
     public static User getUserByMail(String mail){
-        User user = User.find("mail = ?1", mail).first();
+        User user = User.find("email = ?1", mail).first();
         return user;
     }
 
@@ -31,7 +31,7 @@ public class UserService {
         user.name = name;
         user.role = role;
         user.password = password;
-        user.mail = newMail;
+        user.email = newMail;
         user.save();
         return user;
     }
