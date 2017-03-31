@@ -68,14 +68,12 @@ namespace CoaxysProjectTracker.Api
             }
         }
 
-        public static async Task<T> DeleteAsync<T>(string service, object data)
+        public static async Task<T> DeleteAsync<T>(string service)
         {
             string uri = baseUrl + service;
-            IDictionary<string, string> dictionary = data.AsStrStrDictionary();
 
             try
             {
-                var content = new FormUrlEncodedContent(dictionary);
                 var response = await httpClient.DeleteAsync(uri);
                 var responseContent = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<T>(responseContent);
