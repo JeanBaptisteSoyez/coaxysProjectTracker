@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by formation on 30/03/17.
  */
-public class UserService extends Controller {
+public class UserService {
 
     public static User createUser(String name, String role, String mail, String password){
         List<Project> projects = new ArrayList<>();
@@ -20,7 +20,7 @@ public class UserService extends Controller {
     }
 
     public static User getUserByMail(String mail){
-        User user = User.find("mail = ?1", mail).first();
+        User user = User.find("email = ?1", mail).first();
         return user;
     }
 
@@ -32,7 +32,7 @@ public class UserService extends Controller {
         user.name = name;
         user.role = role;
         user.password = password;
-        user.mail = newMail;
+        user.email = newMail;
         return user;
     }
 
