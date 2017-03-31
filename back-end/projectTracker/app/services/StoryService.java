@@ -26,10 +26,11 @@ public class StoryService {
         return story;
     }
 
-    public static Story updateStory(int idStory, String name, Boolean isActive){
+    public static Story updateStory(int idStory, String newName, Boolean newActive){
         Story story = getStoryById(idStory);
-        story.name = name;
-        story.isActive = isActive;
+        story.name = newName;
+        story.isActive = newActive;
+        story.save();
         return story;
     }
 

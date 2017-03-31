@@ -31,6 +31,7 @@ public class EpicService {
     public static Epic updateEpic(int idEpic, String newName) {
         Epic epic = getEpicById(idEpic);
         epic.name = newName;
+        epic.save();
         return epic;
     }
 

@@ -32,6 +32,7 @@ public class UserService {
         user.role = role;
         user.password = password;
         user.mail = newMail;
+        user.save();
         return user;
     }
 

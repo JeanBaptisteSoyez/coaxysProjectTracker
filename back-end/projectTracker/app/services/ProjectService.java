@@ -28,9 +28,10 @@ public class ProjectService {
         return project;
     }
 
-    public static Project updateProject(int idProject, String name) {
+    public static Project updateProject(int idProject, String newName) {
         Project project = getProjectById(idProject);
-        project.name = name;
+        project.name = newName;
+        project.save();
         return project;
     }
 
