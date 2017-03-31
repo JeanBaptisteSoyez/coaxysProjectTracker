@@ -33,14 +33,17 @@ namespace CoaxysProjectTracker.Controllers
             {
                 return View(model);
             }
-            
-            var user = await API.PostAsync<User>("login1.json", new {
+
+            //TODO Remove mocks
+            string service = "";
+            if (model.Email.IndexOf("admin") != -1) service = "login1.json";
+            if (model.Email.IndexOf("user") != -1) service = "login2.json";
+
+            var user = await API.PostAsync<User>(service, new {
                 email = model.Email,
                 password = model.Password
             });
-
-            //TODO Get user from service
-            //if (new UserManager().IsValid(username, password))
+            
             if (user != null)
             {
                 var ident = new ClaimsIdentity(
@@ -55,7 +58,7 @@ namespace CoaxysProjectTracker.Controllers
 
                         // Add roles
                         //TODO Add roles dinamically
-                        new Claim(ClaimTypes.Role, "Admin"),
+                        new Claim(ClaimTypes.Role, user.Role),
                         //new Claim(ClaimTypes.Role, "AnotherRole"),
 
                     },

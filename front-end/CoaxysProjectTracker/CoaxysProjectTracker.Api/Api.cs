@@ -12,7 +12,7 @@ namespace CoaxysProjectTracker.Api
     public class API
     {
         // Get API conf from main project's Web.config
-        private static readonly string baseUrl = ConfigurationManager.AppSettings.Get("Api.BaseUrl");
+        private static readonly string baseUrl = ConfigurationManager.AppSettings.Get("api:BaseUrl");
 
         // Create a single instance of client for all requests
         private static readonly HttpClient httpClient = new HttpClient();

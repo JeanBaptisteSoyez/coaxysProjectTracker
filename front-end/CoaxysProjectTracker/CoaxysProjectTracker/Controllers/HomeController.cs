@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CoaxysProjectTracker.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -14,7 +15,7 @@ namespace CoaxysProjectTracker.Controllers
             return View();
         }
 
-        [Authorize(Roles="Admin")]
+        [CustomAuthorize(Roles="Admin")]
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
