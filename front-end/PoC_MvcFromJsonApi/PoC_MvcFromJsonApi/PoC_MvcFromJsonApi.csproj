@@ -164,6 +164,8 @@
     </Content>
     <Content Include="App_Data\user.json" />
     <Content Include="App_Data\complex.json" />
+    <Content Include="App_Data\login1.json" />
+    <Content Include="App_Data\login2.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
