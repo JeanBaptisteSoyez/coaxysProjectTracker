@@ -23,12 +23,13 @@ public class TaskService {
         return task;
     }
 
-    public static Task updateTask(int idTask, String name, String process, String results, String parameters){
+    public static Task updateTask(int idTask, String newName, String newProcess, String newResults, String newParameters){
         Task task = getTaskById(idTask);
-        task.name = name;
-        task.process = process;
-        task.results = results;
-        task.parameters = parameters;
+        task.name = newName;
+        task.process = newProcess;
+        task.results = newResults;
+        task.parameters = newParameters;
+        task.save();
         return task;
     }
 
