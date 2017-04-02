@@ -11,9 +11,16 @@ namespace CoaxysProjectTracker.Controllers
 {
     public class ProjectController : Controller
     {
+        protected ProjectRepository repository;
+
+        public ProjectController()
+        {
+            repository = new ProjectRepository();
+        }
+
         public async Task<ActionResult> Index()
         {
-            var projects = await API.GetAsync<List<Project>>("project.json");
+            var projects = await repository.GetProjects();
             return View(projects);
         }
     }

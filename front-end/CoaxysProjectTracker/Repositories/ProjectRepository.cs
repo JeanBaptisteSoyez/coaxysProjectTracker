@@ -1,4 +1,4 @@
-﻿/*using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,24 +7,18 @@ using CoaxysProjectTracker.Api;
 
 namespace CoaxysProjectTracker.Entities
 {
-    class ProjectRepository
+    public class ProjectRepository
     {
-        private List<Project> projects;
-
-        protected async Task<List<Project>> LoadProjects()
+        public async Task<List<Project>> GetProjects()
         {
-            projects = await API.GetAsync<List<Project>>("project.json");
+            List<Project> projects = await API.GetAsync<List<Project>>("project.json");
             return projects;
         }
 
-        public IEnumerable<Project> GetProjects()
+        public async Task<Project> GetProjectByID(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public Project GetProjectByID(int id)
-        {
-            throw new NotImplementedException();
+            Project project = await API.GetAsync<Project>("project1.json");
+            return project;
         }
 
         public void InsertProject()
@@ -42,4 +36,4 @@ namespace CoaxysProjectTracker.Entities
 
         }
     }
-}*/
+}

@@ -1,19 +1,28 @@
 ﻿@using  CoaxysProjectTracker.Entities
 @model List<Project>
 
-<div class="row">
-    <div class="col-md-3">
-        <div class="list-item list-item-project new-project">
-            <h3>Nouveau projet</h3>
-        </div>
-    </div>
-    @foreach (Project project in Model)
-    {
-        <div class="col-md-3">
-            <div class="list-item list-item-project">
-                <h3>@project.Name</h3>
-                <p>@project.Description</p>
+<h1>Projets</h1>
+
+<div class="list list-project">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-item list-item-project new-project">
+                <a href="#">
+                    <h3>
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Nouveau projet
+                    </h3>
+                </a>
             </div>
         </div>
-    }
+        @foreach (Project project in Model)
+        {
+            <div class="col-md-4">
+                <div class="list-item list-item-project">
+                    <h3>@project.Name</h3>
+                    <p>@project.Description</p>
+                </div>
+            </div>
+        }
+    </div>
 </div>
