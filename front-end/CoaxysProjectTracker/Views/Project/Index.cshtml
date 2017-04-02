@@ -2,11 +2,18 @@
 @model List<Project>
 
 <div class="row">
+    <div class="col-md-3">
+        <div class="list-item list-item-project new-project">
+            <h3>Nouveau projet</h3>
+        </div>
+    </div>
     @foreach (Project project in Model)
     {
         <div class="col-md-3">
-            @project.Name<br />
-            @project.Description
+            <div class="list-item list-item-project">
+                <h3>@project.Name</h3>
+                <p>@project.Description</p>
+            </div>
         </div>
     }
 </div>
