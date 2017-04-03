@@ -9,27 +9,27 @@ import java.util.List;
 /**
  * Created by formation04 on 29/03/17.
  */
-@Entity
+//@Entity
 public class Story extends Model {
 
-    @Required
-    @Column(nullable = false)
-    public String name;
-    @Required
-    @Column(nullable = false)
-    public Boolean isActive;
-
-    @OneToMany
-    public List<Task> tasks;
-
-    @ManyToOne
-    public Epic epic;
-
-    public Story(String name, Boolean isActive, List<Task> tasks, Epic epic) {
-        this.name = name;
-        this.isActive = isActive;
-        this.tasks = tasks;
-        this.epic = epic;
-    }
+//    @Required
+//    @Column(nullable = false)
+//    public String name;
+//    @Required
+//    @Column(nullable = false)
+//    public Boolean isActive;
+//
+//    @OneToMany
+//    public List<Task> tasks;
+//
+//    @ManyToOne
+//    public Epic epic;
+//
+//    public Story(String name, Boolean isActive, List<Task> tasks, Epic epic) {
+//        this.name = name;
+//        this.isActive = isActive;
+//        this.tasks = tasks;
+//        this.epic = epic;
+//    }
 
 }

@@ -4,6 +4,7 @@ import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -20,15 +21,19 @@ public class Project extends Model {
     @Column(nullable = false)
     public String name;
 
-    @ManyToMany
-    public List<User> users;
+    public String description;
 
-    @OneToMany(mappedBy = "project")
-    public List<Epic> epics;
+    public Date date;
 
-    public Project(String name, List<Epic> epics) {
-        this.name = name;
-        this.epics = epics;
-    }
+//    @ManyToMany
+//    public List<User> users;
+//
+//    @OneToMany(mappedBy = "project")
+//    public List<Epic> epics;
+//
+//    public Project(String name, List<Epic> epics) {
+//        this.name = name;
+//        this.epics = epics;
+//    }
 
 }
