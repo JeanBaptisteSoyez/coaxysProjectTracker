@@ -1,0 +1,40 @@
+﻿@using CoaxysProjectTracker.Models
+@model List<Status>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Status History</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Status
+        </th>
+
+        <th>
+            Comment
+        </th>
+        <th>
+            Attachment
+        </th>
+        <th></th>
+
+    </tr>
+
+    @foreach (Status st in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(s => st.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(s => st.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(s => st.Attachment)
+            </td>
+        </tr>
+    }
+</table>
