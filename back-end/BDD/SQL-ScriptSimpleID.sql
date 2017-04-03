@@ -24,9 +24,9 @@ USE `mydb` ;
 DROP TABLE IF EXISTS `mydb`.`Project` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Project` (
-  `idProject` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idProject`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -36,12 +36,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`User` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
-  `idUser` INT NOT NULL AUTO_INCREMENT,
+  `id` LONG NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `role` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
   `password` VARCHAR(45) NULL,
-  PRIMARY KEY (`idUser`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -51,14 +51,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Epic` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Epic` (
-  `idEpic` INT NOT NULL AUTO_INCREMENT,
+  `id` LONG NOT NULL,
   `idProject` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`idEpic`),
-  INDEX `fk_Epic_1_idx` (`idProject` ASC),
+  PRIMARY KEY (`id`),
+  INDEX `fk_Epic_1_idx` (`id` ASC),
   CONSTRAINT `fk_Epic_1`
-    FOREIGN KEY (`idProject`)
-    REFERENCES `mydb`.`Project` (`idProject`)
+    FOREIGN KEY (`id`)
+    REFERENCES `mydb`.`Project` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -70,15 +70,15 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Story` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Story` (
-  `idStory` INT NOT NULL AUTO_INCREMENT,
+  `id` LONG NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `idEpic` INT NOT NULL,
   `isActive` TINYINT(1) NULL,
-  PRIMARY KEY (`idStory`),
-  INDEX `fk_Story_1_idx` (`idEpic` ASC),
+  PRIMARY KEY (`id`),
+  INDEX `fk_Story_1_idx` (`id` ASC),
   CONSTRAINT `fk_Story_1`
-    FOREIGN KEY (`idEpic`)
-    REFERENCES `mydb`.`Epic` (`idEpic`)
+    FOREIGN KEY (`id`)
+    REFERENCES `mydb`.`Epic` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -90,17 +90,17 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Task` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Task` (
-  `idTask` INT NOT NULL AUTO_INCREMENT,
+  `id` LONG NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `process` VARCHAR(45) NULL,
   `results` VARCHAR(45) NULL,
   `parameters` VARCHAR(45) NULL,
   `idStory` INT NOT NULL,
-  PRIMARY KEY (`idTask`),
-  INDEX `fk_Task_1_idx` (`idStory` ASC),
+  PRIMARY KEY (`id`),
+  INDEX `fk_Task_1_idx` (`id` ASC),
   CONSTRAINT `fk_Task_1`
-    FOREIGN KEY (`idStory`)
-    REFERENCES `mydb`.`Story` (`idStory`)
+    FOREIGN KEY (`id`)
+    REFERENCES `mydb`.`Story` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -112,11 +112,11 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Sprint` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Sprint` (
-  `idSprint` INT NOT NULL AUTO_INCREMENT,
+  `id` LONG NOT NULL,
   `startDate` DATETIME NOT NULL,
   `endDate` DATETIME NOT NULL,
   `number` INT NULL,
-  PRIMARY KEY (`idSprint`))
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
 
@@ -126,23 +126,23 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Status` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Status` (
-  `idStatus` INT NOT NULL AUTO_INCREMENT,
+  `id` LONG NOT NULL,
   `label` VARCHAR(45) NOT NULL,
   `remarks` VARCHAR(45) NULL,
   `date` DATETIME NOT NULL,
   `idTask` INT NOT NULL,
   `idSprint` INT NULL,
-  PRIMARY KEY (`idStatus`),
+  PRIMARY KEY (`id`),
   INDEX `fk_Status_1_idx` (`idTask` ASC),
   INDEX `fk_to_sprint_idx` (`idSprint` ASC),
   CONSTRAINT `fk_to_task`
     FOREIGN KEY (`idTask`)
-    REFERENCES `mydb`.`Task` (`idTask`)
+    REFERENCES `mydb`.`Task` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_to_sprint`
     FOREIGN KEY (`idSprint`)
-    REFERENCES `mydb`.`Sprint` (`idSprint`)
+    REFERENCES `mydb`.`Sprint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -154,19 +154,19 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Project_has_User` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Project_has_User` (
-  `Project_idProject` INT NOT NULL,
-  `User_idUser` INT NOT NULL,
-  PRIMARY KEY (`Project_idProject`, `User_idUser`),
-  INDEX `fk_Project_has_User_User1_idx` (`User_idUser` ASC),
-  INDEX `fk_Project_has_User_Project1_idx` (`Project_idProject` ASC),
+  `Project_id` INT NOT NULL,
+  `User_idr` INT NOT NULL,
+  PRIMARY KEY (`Project_id`, `User_id`),
+  INDEX `fk_Project_has_User_User1_idx` (`User_id` ASC),
+  INDEX `fk_Project_has_User_Project1_idx` (`Project_id` ASC),
   CONSTRAINT `fk_Project_has_User_Project1`
-    FOREIGN KEY (`Project_idProject`)
-    REFERENCES `mydb`.`Project` (`idProject`)
+    FOREIGN KEY (`Project_id`)
+    REFERENCES `mydb`.`Project` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Project_has_User_User1`
-    FOREIGN KEY (`User_idUser`)
-    REFERENCES `mydb`.`User` (`idUser`)
+    FOREIGN KEY (`User_id`)
+    REFERENCES `mydb`.`User` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -175,7 +175,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`StatusWatch`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`StatusWatch` ;
+/*DROP TABLE IF EXISTS `mydb`.`StatusWatch` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`StatusWatch` (
   `Status_idStatus` INT NOT NULL,
@@ -194,15 +194,15 @@ CREATE TABLE IF NOT EXISTS `mydb`.`StatusWatch` (
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Status_has_Task_Task1`
     FOREIGN KEY (`Task_idTask`)
-    REFERENCES `mydb`.`Task` (`idTask`)
+    REFERENCES `mydb`.`Task` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_StatusWatch_Sprint1`
     FOREIGN KEY (`Sprint_idSprint`)
-    REFERENCES `mydb`.`Sprint` (`idSprint`)
+    REFERENCES `mydb`.`Sprint` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+ENGINE = InnoDB;*/
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
