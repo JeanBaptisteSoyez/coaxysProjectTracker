@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoaxysProjectTracker.Api.Extensions
+namespace CoaxysProjectTracker.Extensions
 {
     public static class ObjectExtensions
     {

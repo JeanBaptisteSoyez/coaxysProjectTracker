@@ -1,5 +1,5 @@
-﻿using CoaxysProjectTracker.Api;
-using CoaxysProjectTracker.Entities;
+﻿using CoaxysProjectTracker.Services;
+using CoaxysProjectTracker.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace CoaxysProjectTracker.Controllers
         // affichage des epics
             public async Task<ActionResult> Index()
             {
-                var epics = await API.GetAsync<List<Epic>>("epic.json");
+                var epics = await Api.GetAsync<List<Epic>>("epic.json");
                 return View(epics);
             }
 

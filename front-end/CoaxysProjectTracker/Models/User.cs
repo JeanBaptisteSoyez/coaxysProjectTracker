@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace CoaxysProjectTracker.Entities
+namespace CoaxysProjectTracker.Models
 {
     public class User
     {

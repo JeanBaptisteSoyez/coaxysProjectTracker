@@ -1,4 +1,4 @@
-﻿@using CoaxysProjectTracker.Entities
+﻿@using CoaxysProjectTracker.Models
 @model List<Epic>
     
 <h2>Epics List : </h2>
@@ -21,7 +21,7 @@
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <div class="caption">
-                    <h3>@epic.EpicName</h3>
+                    <h3>@epic.Name</h3>
                     <p>@epic.Description</p>
                     <p>
                         <a href="#" class="btn btn-primary" role="button">Tasks</a>
