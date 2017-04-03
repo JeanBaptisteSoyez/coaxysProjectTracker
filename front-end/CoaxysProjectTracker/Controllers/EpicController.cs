@@ -18,6 +18,16 @@ namespace CoaxysProjectTracker.Controllers
                 return View(epics);
             }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
     }
 
 }

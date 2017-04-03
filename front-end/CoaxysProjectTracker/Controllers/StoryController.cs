@@ -17,5 +17,16 @@ namespace CoaxysProjectTracker.Controllers
             var stories = await API.GetAsync<List<Story>>("story.json");
             return View(stories);
         }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+        public ActionResult Edit()
+        {
+            return View();
+        }
+
+
     }
 }

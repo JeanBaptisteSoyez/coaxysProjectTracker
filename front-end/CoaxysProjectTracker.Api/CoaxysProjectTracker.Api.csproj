@@ -49,12 +49,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CoaxysProjectTracker.Entities\CoaxysProjectTracker.Entities.csproj">
-      <Project>{9d7241b5-49a4-4df2-87df-a7abe6281c32}</Project>
-      <Name>CoaxysProjectTracker.Entities</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
