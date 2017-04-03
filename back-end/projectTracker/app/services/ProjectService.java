@@ -4,6 +4,7 @@ import models.Epic;
 import models.Project;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -11,9 +12,9 @@ import java.util.List;
  */
 public class ProjectService {
 
-    public static Project createProject(String name) {
+    public static Project createProject(String name, String description, Date date) {
         List<Epic> epics = new ArrayList<>();
-        Project project = new Project(name, epics);
+        Project project = new Project(name, description, date);
         project.save();
         return project;
     }
@@ -23,21 +24,22 @@ public class ProjectService {
         return project;
     }
 
-    public static Project getProjectById(int idProject) {
-        Project project = Project.find("idProject = ?1", idProject).first();
+    public static Project getProjectById(long idProject) {
+        Project project = Project.find("id = ?1", idProject).first();
         return project;
     }
 
-    public static Project updateProject(int idProject, String newName) {
-        Project project = getProjectById(idProject);
-        project.name = newName;
-        project.save();
-        return project;
-    }
-
-    public static void deleteProject(int idProject) {
+    public static void deleteProject(long idProject) {
         Project project = getProjectById(idProject);
         project.delete();
     }
 
+    public static Project updateProject(String oldName, String newName, String desccription, Date date) {
+        Project project = getProjectByName(oldName);
+        project.name = newName;
+        project.description = desccription;
+        project.date = date;
+        project.save();
+        return project;
+    }
 }

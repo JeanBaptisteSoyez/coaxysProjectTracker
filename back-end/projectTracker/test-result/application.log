@@ -1,4 +1,4 @@
-31 mars 2017 15:48:30,284 INFO  ~ Starting /home/formation/workspace/coaxysProjectTracker/back-end/projectTracker/.
-31 mars 2017 15:48:32,070 WARN  ~ You're running Play! in DEV mode
-31 mars 2017 15:48:33,950 INFO  ~ Connected to jdbc:h2:mem:play;MODE=MYSQL;LOCK_MODE=0 for default
-31 mars 2017 15:48:35,521 INFO  ~ Application 'projectTracker' is now started !
+03 avr. 2017 15:48:58,842 INFO  ~ Starting /home/formation/workspace/coaxysProjectTracker/back-end/projectTracker/.
+03 avr. 2017 15:49:02,299 WARN  ~ You're running Play! in DEV mode
+03 avr. 2017 15:49:06,213 INFO  ~ Connected to jdbc:mysql://localhost/mydb?useUnicode=yes&connectionCollation=utf8_general_ci&characterEncoding=UTF-8 for default
+03 avr. 2017 15:49:09,089 INFO  ~ Application 'projectTracker' is now started !

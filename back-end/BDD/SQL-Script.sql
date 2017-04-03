@@ -24,7 +24,7 @@ USE `mydb` ;
 DROP TABLE IF EXISTS `mydb`.`Project` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Project` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NULL,
   `date` DATE NULL,
@@ -38,7 +38,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`User` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`User` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `role` VARCHAR(45) NULL,
   `email` VARCHAR(45) NULL,
@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Epic` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Epic` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `idProject` BIGINT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
   `description` VARCHAR(45) NOT NULL,
@@ -75,7 +75,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Story` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Story` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `idEpic` BIGINT NOT NULL,
   `isActive` TINYINT(1) NULL,
@@ -97,7 +97,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Task` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Task` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `process` VARCHAR(45) NULL,
   `results` VARCHAR(45) NULL,
@@ -120,7 +120,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Status` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Status` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `label` VARCHAR(45) NOT NULL,
   `action` VARCHAR(45) NULL,
   `remarks` VARCHAR(45) NULL,
@@ -169,7 +169,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Sprint` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Sprint` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `startDate` DATE NOT NULL,
   `endDate` DATE NOT NULL,
   `number` INT NULL,
@@ -191,7 +191,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Version` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Version` (
-  `id` BIGINT NOT NULL,
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
   `startDate` DATE NULL,
   `endDate` DATE NULL,
   `description` VARCHAR(45) NOT NULL,
