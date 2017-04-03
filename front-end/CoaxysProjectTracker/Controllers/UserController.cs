@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using CoaxysProjectTracker.Models;
+using CoaxysProjectTracker.Attributes;
 
 namespace CoaxysProjectTracker.Controllers
 {
+    [CustomAuthorize(Roles="Admin")]
     public class UserController : Controller
     {
         public async Task<ActionResult> Index()

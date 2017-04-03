@@ -6,26 +6,36 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using CoaxysProjectTracker.Attributes;
+using CoaxysProjectTracker.Repositories;
 
 namespace CoaxysProjectTracker.Controllers
 {
+    [CustomAuthorize]
     public class EpicController : Controller
     {
-        // affichage des epics
-            public async Task<ActionResult> Index()
-            {
-                var epics = await Api.GetAsync<List<Epic>>("epic.json");
-                return View(epics);
-            }
+        protected EpicRepository repository;
+
+        public EpicController()
+        {
+            repository = new EpicRepository();
+        }
+        
+        public async Task<ActionResult> Index()
+        {
+            var epics = await repository.GetEpics();
+            return View(epics);
+        }
 
         public ActionResult Create()
         {
             return View();
         }
 
-        public ActionResult Edit()
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var epic = await repository.GetEpicByID(id);
+            return View(epic);
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using CoaxysProjectTracker.Repositories;
+﻿using CoaxysProjectTracker.Attributes;
+using CoaxysProjectTracker.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace CoaxysProjectTracker.Controllers
 {
+    [CustomAuthorize]
     public class ProjectController : Controller
     {
         protected ProjectRepository repository;
@@ -28,9 +30,10 @@ namespace CoaxysProjectTracker.Controllers
             return View();
         }
 
-        public ActionResult Edit()
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var project = await repository.GetProjectByID(id);
+            return View(project);
         }
 
     }

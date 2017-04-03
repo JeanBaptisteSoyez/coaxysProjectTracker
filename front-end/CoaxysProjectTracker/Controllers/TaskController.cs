@@ -1,4 +1,5 @@
-﻿using CoaxysProjectTracker.Services;
+﻿using CoaxysProjectTracker.Attributes;
+using CoaxysProjectTracker.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 
 namespace CoaxysProjectTracker.Controllers
 {
+    [CustomAuthorize]
     public class TaskController : Controller
     {
         // GET: Task
