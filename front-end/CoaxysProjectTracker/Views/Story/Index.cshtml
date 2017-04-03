@@ -1,32 +1,32 @@
 ﻿@using  CoaxysProjectTracker.Models
 @model List<Story>
 
+@{
+    ViewBag.Title = "Stories";
+}
 
+<h1>Stories</h1>
 
-
-<div class="row">
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            
-                <div class="caption">
-                    <h1><a href="#">(+)</a></h1>
-                    <h3><a href="#">New Story</a></h3>
-                </div>
-            
-        </div>
-    </div>
-@foreach (Story story in Model)
-{
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <div class="caption">
-                <h3>@story.Name</h3>
-                <p>@story.Description</p>
-                <p>
-                <a href="#" class="btn btn-primary" role="button">Tasks</a> 
-                </p>
+<div class="list list-project">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-item list-item-project new-project">
+                <a href="#">
+                    <h3>
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Nouvelle story
+                    </h3>
+                </a>
             </div>
         </div>
+        @foreach (Story story in Model)
+        {
+            <div class="col-md-4">
+                <div class="list-item list-item-project">
+                    <h3>@story.Name</h3>
+                    <p>@story.Description</p>
+                </div>
+            </div>
+        }
     </div>
-}
 </div>

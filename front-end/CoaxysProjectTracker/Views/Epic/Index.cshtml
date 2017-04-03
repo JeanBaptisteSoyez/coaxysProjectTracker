@@ -1,33 +1,32 @@
 ﻿@using CoaxysProjectTracker.Models
 @model List<Epic>
+
+@{
+    ViewBag.Title = "Epics";
+}
     
-<h2>Epics List : </h2>
+<h1>Epics</h1>
 
-
-
-<div class="row">
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-
-            <div class="caption">
-                <h1><a href="#">(+)</a></h1>
-                <h3><a href="#">New Epic</a></h3>
+<div class="list list-project">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-item list-item-project new-project">
+                <a href="#">
+                    <h3>
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Nouvel epic
+                    </h3>
+                </a>
             </div>
-
         </div>
-    </div>
-    @foreach (Epic epic in Model)
-    {
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail">
-                <div class="caption">
+        @foreach (Epic epic in Model)
+        {
+            <div class="col-md-4">
+                <div class="list-item list-item-epic">
                     <h3>@epic.Name</h3>
                     <p>@epic.Description</p>
-                    <p>
-                        <a href="#" class="btn btn-primary" role="button">Tasks</a>
-                    </p>
                 </div>
             </div>
-        </div>
-    }
+        }
+    </div>
 </div>
