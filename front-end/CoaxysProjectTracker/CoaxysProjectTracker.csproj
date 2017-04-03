@@ -238,10 +238,18 @@
     <Content Include="Views\Project\ProjectForm.cshtml" />
     <Content Include="Views\Epic\Index.cshtml" />
     <Content Include="Views\Story\Index.cshtml" />
+    <Content Include="Views\Project\Create.cshtml" />
+    <Content Include="Views\Epic\Create.cshtml" />
+    <Content Include="Views\Story\Create.cshtml" />
+    <Content Include="Views\Task\Create.cshtml" />
+    <Content Include="Views\Epic\Edit.cshtml" />
+    <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Story\Edit.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Task\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
