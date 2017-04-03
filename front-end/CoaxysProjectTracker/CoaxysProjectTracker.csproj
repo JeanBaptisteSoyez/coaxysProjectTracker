@@ -223,6 +223,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\_UserForm.cshtml" />
     <Content Include="Views\Project\Index.cshtml" />
+    <Content Include="_src\js\main.js" />
     <Content Include="_src\scss\main.scss" />
     <Content Include="_src\scss\_common.scss" />
     <Content Include="Views\Project\ProjectForm.cshtml" />
@@ -230,7 +231,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Epic\" />
-    <Folder Include="_src\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
