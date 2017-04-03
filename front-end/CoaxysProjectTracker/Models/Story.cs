@@ -1,21 +1,27 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoaxysProjectTracker.Entities
+namespace CoaxysProjectTracker.Models
 {
-    public class Project
+    public class Story
     {
-        [JsonProperty("idProject")]
+        [JsonProperty("id")]
         public int ID { get; set; }
 
+        [Required]
+        [Display(Name = "Story Name")]
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [Display(Name = "Story Description")]
+        [DataType(DataType.MultilineText)]
         [JsonProperty("description")]
         public string Description { get; set; }
+
     }
 }

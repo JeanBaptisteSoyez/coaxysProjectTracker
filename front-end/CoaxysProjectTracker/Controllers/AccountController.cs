@@ -9,8 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using CoaxysProjectTracker.Api;
-using CoaxysProjectTracker.Entities;
+using CoaxysProjectTracker.Services;
 
 namespace CoaxysProjectTracker.Controllers
 {
@@ -39,7 +38,7 @@ namespace CoaxysProjectTracker.Controllers
             if (model.Email.IndexOf("admin") != -1) service = "login1.json";
             if (model.Email.IndexOf("user") != -1) service = "login2.json";
 
-            var user = await API.PostAsync<User>(service, new {
+            var user = await Api.PostAsync<User>(service, new {
                 email = model.Email,
                 password = model.Password
             });

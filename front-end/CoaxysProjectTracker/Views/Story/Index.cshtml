@@ -1,0 +1,42 @@
+﻿@using  CoaxysProjectTracker.Models
+@model List<Story>
+
+@{
+    ViewBag.Title = "Stories";
+}
+
+<h1>Stories</h1>
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("index", "project")">Projets</a></li>
+    <li><a href="@Url.Action("index", "epic")">Epics</a></li>
+    <li class="active">Stories</li>
+</ol>
+
+<div class="list list-project">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-item list-item-project new-project">
+                <a data-toggle="modal" data-target="#main-modal" href="@Url.Action("create", "story")">
+                    <h3>
+                        <i class="glyphicon glyphicon-plus"></i>
+                        Nouvelle story
+                    </h3>
+                </a>
+            </div>
+        </div>
+        @foreach (Story story in Model)
+        {
+            <div class="col-md-4">
+                <div class="list-item list-item-project">
+                    <h3>@story.Name</h3>
+                    <p>@story.Description</p>
+                    <p>
+                        <a href="@Url.Action("index", "task")" class="btn btn-primary" role="button">Tasks</a>
+                        <a href="@Url.Action("edit", "story", new { id = story.ID })" class="btn btn-primary" role="button">Modify</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

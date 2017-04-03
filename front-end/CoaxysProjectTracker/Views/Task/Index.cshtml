@@ -1,0 +1,62 @@
+﻿@using CoaxysProjectTracker.Models
+@model List<Task>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Tasks List </h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            Entry Parameters
+        </th>
+        <th>
+            Process
+        </th>
+        <th>
+           Result
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Comment
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntryParameter)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Process)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Result)
+        </td>
+        <td>
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default">OK</button>
+                <button type="button" class="btn btn-default">KO</button>
+            </div>
+        </td>
+        <td>
+            
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID })          
+        </td>
+    </tr>
+}
+
+</table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

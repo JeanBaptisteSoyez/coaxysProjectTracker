@@ -1,13 +1,21 @@
-﻿@using  CoaxysProjectTracker.Entities
+﻿@using  CoaxysProjectTracker.Models
 @model List<Project>
 
+@{ 
+    ViewBag.Title = "Projets";
+}
+
 <h1>Projets</h1>
+
+<ol class="breadcrumb">
+    <li class="active">Projets</li>
+</ol>
 
 <div class="list list-project">
     <div class="row">
         <div class="col-md-4">
             <div class="list-item list-item-project new-project">
-                <a href="#">
+                <a href="@Url.Action("create", "project")">
                     <h3>
                         <i class="glyphicon glyphicon-plus"></i>
                         Nouveau projet
@@ -21,7 +29,12 @@
                 <div class="list-item list-item-project">
                     <h3>@project.Name</h3>
                     <p>@project.Description</p>
+                    <p>
+                        <a href="@Url.Action("index", "epic")" class="btn btn-primary" role="button">Epics</a>
+                        <a href="@Url.Action("edit", "project", new { id = project.ID })" class="btn btn-primary" role="button">Modify</a>
+                    </p>
                 </div>
+
             </div>
         }
     </div>

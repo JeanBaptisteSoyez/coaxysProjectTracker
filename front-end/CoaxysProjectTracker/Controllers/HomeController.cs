@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace CoaxysProjectTracker.Controllers
 {
-    [Authorize]
+    [CustomAuthorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
