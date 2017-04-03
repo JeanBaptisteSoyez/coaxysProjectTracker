@@ -1,0 +1,21 @@
+{
+  "name": "CoaxysProjectTracker",
+  "version": "0.1.0",
+  "description": "Coaxys Project Tracker Frontend App",
+  "main": "main.js",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "author": "Camille Payen",
+  "license": "None actually",
+  "devDependencies": {
+    "gulp": "~3.9.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "~2.1.1",
+    "gulp-uglify": "^1.5.1",
+    "node-bourbon": "^4.2.3"
+  }
+}

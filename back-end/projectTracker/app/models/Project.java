@@ -3,9 +3,7 @@ package models;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
@@ -14,11 +12,18 @@ import java.util.List;
 @Entity
 public class Project extends Model {
 
+//    @Id
+//    @GeneratedValue
+//    public Integer idProject;
+
     @Required
     @Column(nullable = false)
     public String name;
 
-    @OneToMany
+    @ManyToMany
+    public List<User> users;
+
+    @OneToMany(mappedBy = "project")
     public List<Epic> epics;
 
     public Project(String name, List<Epic> epics) {

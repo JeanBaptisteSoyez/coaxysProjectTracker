@@ -60,4 +60,6 @@ modules.xml
 # Sonarlint plugin
 .idea/sonarlint
 
+/tmp
+
 # End of https://www.gitignore.io/api/intellij

@@ -17,6 +17,7 @@ public class Epic extends Model {
     public String name;
 
     @OneToMany
+    @JoinColumn(name = "idProject")
     public List<Story> stories;
 
     @ManyToOne

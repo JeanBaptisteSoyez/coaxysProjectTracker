@@ -2,7 +2,6 @@ package services;
 
 import models.Project;
 import models.User;
-import play.mvc.Controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +32,7 @@ public class UserService {
         user.role = role;
         user.password = password;
         user.email = newMail;
+        user.save();
         return user;
     }
 

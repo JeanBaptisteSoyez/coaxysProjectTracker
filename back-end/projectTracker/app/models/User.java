@@ -5,16 +5,19 @@ import play.data.validation.Password;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 /**
  * Created by formation04 on 29/03/17.
  */
 @Entity(name = "User")
+@Table(name="User")
 public class User extends Model {
+
+//    @Id
+//    @GeneratedValue
+//    public Integer id;
 
     @Required
     @Column (nullable = false)
@@ -31,7 +34,7 @@ public class User extends Model {
     @Column (nullable = false)
     public String password;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "users")
     public List<Project> projects;
 
     public User(String name, String role, String email, String password, List<Project> projects) {

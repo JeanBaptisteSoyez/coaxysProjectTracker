@@ -1,10 +1,10 @@
 package services;
 
-import models.*;
+import models.Sprint;
+import models.Status;
+import models.Task;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by formation on 30/03/17.
@@ -26,12 +26,13 @@ public class StatusService {
         return status;
     }
 
-    public static Status updateStatus(int idStatus, String label, String remarks, Date date, int idTask){
+    public static Status updateStatus(int idStatus, String newLabel, String newRemarks, Date newDate, int idTask){
         Status status = getStatusById(idStatus);
-        status.label = label;
-        status.remarks = remarks;
-        status.date = date;
+        status.label = newLabel;
+        status.remarks = newRemarks;
+        status.date = newDate;
         status.task = TaskService.getTaskById(idTask);
+        status.save();
         return status;
     }
 
