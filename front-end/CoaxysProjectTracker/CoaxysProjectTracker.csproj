@@ -173,6 +173,8 @@
     <Compile Include="Controllers\EpicController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\StoryController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -227,10 +229,12 @@
     <Content Include="_src\scss\main.scss" />
     <Content Include="_src\scss\_common.scss" />
     <Content Include="Views\Project\ProjectForm.cshtml" />
+    <Content Include="Views\Epic\Index.cshtml" />
+    <Content Include="Views\Story\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Epic\" />
+    <Folder Include="Views\Task\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
