@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CoaxysProjectTracker.Entities;
 using System.Threading.Tasks;
-using CoaxysProjectTracker.Api;
+using CoaxysProjectTracker.Models;
+using CoaxysProjectTracker.Services;
 
 namespace CoaxysProjectTracker.Controllers
 {
@@ -14,7 +14,7 @@ namespace CoaxysProjectTracker.Controllers
         // GET: Story
         public async Task<ActionResult> Index()
         {
-            var stories = await API.GetAsync<List<Story>>("story.json");
+            var stories = await Api.GetAsync<List<Story>>("story.json");
             return View(stories);
         }
     }

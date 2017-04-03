@@ -1,5 +1,4 @@
-﻿using CoaxysProjectTracker.Api.Extensions;
-using CoaxysProjectTracker.Entities;
+﻿using CoaxysProjectTracker.Extensions;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -7,9 +6,9 @@ using System.Configuration;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace CoaxysProjectTracker.Api
+namespace CoaxysProjectTracker.Services
 {
-    public class API
+    public class Api
     {
         // Get API conf from main project's Web.config
         private static readonly string baseUrl = ConfigurationManager.AppSettings.Get("api:BaseUrl");
