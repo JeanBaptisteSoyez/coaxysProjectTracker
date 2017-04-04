@@ -32,7 +32,7 @@ public class Epic extends Model {
         this.name = name;
         this.description = description;
         this.date = date;
-//        this.stories = new ArrayList<>();
+        this.stories = new ArrayList<>();
         this.project = project;
     }
 }

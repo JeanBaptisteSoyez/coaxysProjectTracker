@@ -22,9 +22,9 @@ public class Story extends Model {
     @Column(nullable = false)
     public Boolean isActive;
 
-//    @OneToMany
-//    public List<Task> tasks;
-//
+    @OneToMany(mappedBy = "story")
+    public List<Task> tasks;
+
     @ManyToOne
     @JoinColumn(name = "idEpic")
     public Epic epic;

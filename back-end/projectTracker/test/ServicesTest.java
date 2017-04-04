@@ -332,4 +332,67 @@ public class ServicesTest extends UnitTest {
         // Test
         assertNull(TaskService.getTaskById(idTask));
     }
+
+
+    /**********
+     * Status *
+     **********/
+
+    @Test
+    public void GAcreateAndRetrieveStatus() {
+        // Create a new status of a task and save it
+        Story story = Story.find("name = ?1", "nom story").first();
+        Timestamp date = new Timestamp(new Date().getTime());
+        Task task = TaskService.createTask("name task", "process task", "results",
+                "parameters", date, story);
+        long idStatus = StatusService.createStatus("label status", "action status", "remarks status",
+                date, "description version", "description sprint", task).id;
+
+        // Retrieve the task with it id
+        Status status = StatusService.getStatusById(idStatus);
+
+        // Test
+        assertNotNull(status);
+        assertEquals("label status", status.label);
+        assertEquals("action status", status.action);
+        assertEquals("remarks status", status.remarks);
+        assertEquals("description version", status.descriptionVersion);
+        assertEquals("description sprint", status.descriptionSprint);
+        assertEquals(date , status.date);
+    }
+
+
+    @Test
+    public void GBupdateStatus(){
+        // retrieve the status
+        Status status = Status.find("label = ?1", "label status").first();
+
+        //modifies the status
+        Timestamp date = new Timestamp(new Date().getTime());
+        StatusService.updateStatus(status, "label status", "action status", "remarks status",
+                date, "description version", "description sprint");
+
+        // Test
+        assertNotNull(status);
+        assertEquals("label status", status.label);
+        assertEquals("action status", status.action);
+        assertEquals("remarks status", status.remarks);
+        assertEquals("description version", status.descriptionVersion);
+        assertEquals("description sprint", status.descriptionSprint);
+        assertEquals(date , status.date);
+    }
+
+
+    @Test
+    public void GCdeleStatus(){
+        // retrieve the status
+        Status status = Status.find("label = ?1", "label status").first();
+
+        // delete the task
+        long idStatus = status.id;
+        StatusService.deleteStatus(status);
+
+        // Test
+        assertNull(StatusService.getStatusById(idStatus));
+    }
 }

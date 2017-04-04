@@ -31,6 +31,10 @@ public class Task extends Model {
     @JoinColumn(name = "idStory")
     public Story story;
 
+    //
+//    @OneToMany
+//    public List<Status> statuses;
+
     public Task(String name, String process, String results, String parameters, Timestamp date, Story story) {
         this.name = name;
         this.process = process;
@@ -39,20 +43,4 @@ public class Task extends Model {
         this.date = date;
         this.story = story;
     }
-
-
-    //
-//    @OneToMany
-//    public List<Status> statuses;
-//
-//
-//    public Task(String name, String process, String results, String parameters, List<Status> statuses, Story story) {
-//        this.name = name;
-//        this.process = process;
-//        this.results = results;
-//        this.parameters = parameters;
-//        this.statuses = statuses;
-//        this.story = story;
-//    }
-
 }
