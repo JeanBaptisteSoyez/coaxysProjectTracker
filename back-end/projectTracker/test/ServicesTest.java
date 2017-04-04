@@ -1,7 +1,4 @@
-import models.Epic;
-import models.Project;
-import models.Sprint;
-import models.Version;
+import models.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -9,10 +6,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import play.test.Fixtures;
 import play.test.UnitTest;
-import services.EpicService;
-import services.ProjectService;
-import services.SprintService;
-import services.VersionService;
+import services.*;
 
 import java.util.Date;
 
@@ -231,4 +225,54 @@ public class ServicesTest extends UnitTest {
         // Test
         assertNull(EpicService.getEpicById(idEpic));
     }
+
+
+    /*********
+     * Story *
+     *********/
+
+    @Test
+    public void EAcreateAndRetrieveStory() {
+        // Create a new story of an epic and save it
+        Project project = ProjectService.getProjectByName("diviser le projet");
+        Epic epic = EpicService.createEpic("nom epic", "description epic", new Date(),project);
+        long idStory = StoryService.createStory("nom story", "description story", true, new Date(), epic).id;
+
+        // Retrieve the epic with it id
+        Story story = StoryService.getStoryById(idStory);
+
+        // Test
+        assertNotNull(story);
+        assertEquals("nom story", story.name);
+    }
+
+    @Test
+    public void EBupdateStory(){
+        // retrieve the story
+        Story story = Story.find("name = ?1", "nom story").first();
+
+        //modifies the story
+        Date date = new Date();
+        StoryService.updateStory(story, "nom story 2", "description story 2", new Date());
+
+        // Test
+        assertNotNull(story);
+        assertEquals("nom story 2", story.name);
+        assertEquals("description story 2", story.description);
+        assertEquals(date, story.date);
+    }
+
+    @Test
+    public void ECdeleStory(){
+        // retrieve the story
+        Story story = Story.find("name = ?1", "nom story 2").first();
+
+        // delete the story
+        long idStory = story.id;
+        StoryService.deleteStory(story);
+
+        // Test
+        assertNull(EpicService.getEpicById(idStory));
+    }
+
 }
