@@ -26,7 +26,9 @@ gulp.task('sass', function () {
 gulp.task('js', function () {
     return gulp.src(theme.path + theme.src + 'js/*.js')
         .pipe(plumber())
-        .pipe(babel())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(uglify())
         .pipe(concat('all.min.js'))
         .pipe(gulp.dest(theme.path + theme.dest.js))

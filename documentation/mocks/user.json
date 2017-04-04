@@ -1,0 +1,51 @@
+﻿[
+  {
+    "idUser": 1,
+    "name": "John",
+    "role": "User",
+    "email": "john@customer.com",
+    "password": "****"
+  },
+  {
+    "ID": 2,
+    "Name": "Bill",
+    "role": "Admin",
+    "email": "bill@customer.com",
+    "password": "****"
+  },
+  {
+    "ID": 3,
+    "Name": "Bob",
+    "role": "User",
+    "email": "bob@customer.com",
+    "password": "****"
+  },
+  {
+    "ID": 4,
+    "Name": "William",
+    "role": "User",
+    "email": "will@customer.com",
+    "password": "****"
+  },
+  {
+    "ID": 5,
+    "Name": "Ginger",
+    "role": "Admin",
+    "email": "ginger@customer.com",
+    "password": "****"
+  },
+  {
+    "ID": 6,
+    "Name": "Jack",
+    "role": "User",
+    "email": "jack@customer.com",
+    "password": "****"
+  },
+  {
+    "ID": 7,
+    "Name": "Jane",
+    "role": "User",
+    "email": "jane@customer.com",
+    "password": "****"
+  }
+]
