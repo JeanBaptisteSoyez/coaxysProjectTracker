@@ -1,11 +1,8 @@
 package services;
 
-import models.Epic;
 import models.Project;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by formation04 on 30/03/17.
@@ -13,7 +10,6 @@ import java.util.List;
 public class ProjectService {
 
     public static Project createProject(String name, String description, Date date) {
-        List<Epic> epics = new ArrayList<>();
         Project project = new Project(name, description, date);
         project.save();
         return project;
@@ -34,10 +30,10 @@ public class ProjectService {
         project.delete();
     }
 
-    public static Project updateProject(String oldName, String newName, String desccription, Date date) {
+    public static Project updateProject(String oldName, String newName, String description, Date date) {
         Project project = getProjectByName(oldName);
         project.name = newName;
-        project.description = desccription;
+        project.description = description;
         project.date = date;
         project.save();
         return project;

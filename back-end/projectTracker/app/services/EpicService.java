@@ -1,16 +1,10 @@
 package services;
 
-import models.Epic;
-import models.Project;
-import models.Story;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by formation04 on 30/03/17.
  */
 public class EpicService {
+
 
 //    public static Epic createEpic(String name, int idProject) {
 //        Project project = ProjectService.getProjectById(idProject);
