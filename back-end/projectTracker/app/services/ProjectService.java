@@ -27,15 +27,24 @@ public class ProjectService {
 
     public static void deleteProject(long idProject) {
         Project project = getProjectById(idProject);
+        deleteProject(project);
+    }
+
+    public static void deleteProject(Project project) {
         project.delete();
     }
 
-    public static Project updateProject(String oldName, String newName, String description, Date date) {
-        Project project = getProjectByName(oldName);
+
+    public static Project updateProject(Project project, String newName, String description, Date date) {
         project.name = newName;
         project.description = description;
         project.date = date;
         project.save();
         return project;
+    }
+
+    public static Project updateProject(String oldName, String newName, String desccription, Date date) {
+        Project project = getProjectByName(oldName);
+        return updateProject(project, newName, desccription, date);
     }
 }
