@@ -30,8 +30,9 @@
                     <h3>@project.Name</h3>
                     <p>@project.Description</p>
                     <p>
-                        <a href="@Url.Action("index", "epic")" class="btn btn-primary" role="button">Epics</a>
-                        <a href="@Url.Action("edit", "project", new { id = project.ID })" class="btn btn-primary" role="button">Modify</a>
+                        <a href="@Url.Action("index", "epic")" class="btn btn-primary" role="button">Epics</a> |
+                        <a href="@Url.Action("edit", "project", new { id = project.ID })" class="btn btn-primary" role="button">Modify</a> |
+                        <a href="@Url.Action("ListAllTasks", "Task")" class="btn btn-primary" role="button">Tasks</a>
                     </p>
                 </div>
 

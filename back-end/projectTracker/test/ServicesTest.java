@@ -1,7 +1,4 @@
-import models.Epic;
-import models.Project;
-import models.Sprint;
-import models.Version;
+import models.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
@@ -9,11 +6,9 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import play.test.Fixtures;
 import play.test.UnitTest;
-import services.EpicService;
-import services.ProjectService;
-import services.SprintService;
-import services.VersionService;
+import services.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -230,5 +225,227 @@ public class ServicesTest extends UnitTest {
 
         // Test
         assertNull(EpicService.getEpicById(idEpic));
+    }
+
+
+    /*********
+     * Story *
+     *********/
+
+    @Test
+    public void EAcreateAndRetrieveStory() {
+        // Create a new story of an epic and save it
+        Project project = ProjectService.getProjectByName("diviser le projet");
+        Epic epic = EpicService.createEpic("nom epic", "description epic", new Date(),project);
+        long idStory = StoryService.createStory("nom story", "description story", true, new Date(), epic).id;
+
+        // Retrieve the epic with it id
+        Story story = StoryService.getStoryById(idStory);
+
+        // Test
+        assertNotNull(story);
+        assertEquals("nom story", story.name);
+    }
+
+    @Test
+    public void EBupdateStory(){
+        // retrieve the story
+        Story story = Story.find("name = ?1", "nom story").first();
+
+        //modifies the story
+        Date date = new Date();
+        StoryService.updateStory(story, "nom story 2", "description story 2", new Date());
+
+        // Test
+        assertNotNull(story);
+        assertEquals("nom story 2", story.name);
+        assertEquals("description story 2", story.description);
+        assertEquals(date, story.date);
+    }
+
+    @Test
+    public void ECdeleStory(){
+        // retrieve the story
+        Epic epic = Epic.find("name = ?1", "nom epic").first();
+        Story story = Story.find("name = ?1", "nom story 2").first();
+
+        // delete the story
+        long idStory = story.id;
+        StoryService.deleteStory(story);
+
+        // Test
+        assertNull(EpicService.getEpicById(idStory));
+    }
+
+
+    /********
+     * Task *
+     ********/
+
+    @Test
+    public void FAcreateAndRetrieveTask() {
+        // Create a new task of a story and save it
+        Epic epic = Epic.find("name = ?1", "nom epic").first();
+        Story story = StoryService.createStory("nom story", "description story", true, new Date(), epic);
+        Timestamp date = new Timestamp(new Date().getTime());
+        long idTask = TaskService.createTask("nom task", "process task", "results task", " parameters task", date, story).id;
+
+        // Retrieve the task with it id
+        Task task = TaskService.getTaskById(idTask);
+
+        // Test
+        assertNotNull(task);
+        assertEquals("nom task", task.name);
+        assertEquals("process task", task.process);
+        assertEquals("results task", task.results);
+        assertEquals(" parameters task", task.parameters);
+        assertEquals(date , task.date);
+    }
+
+    @Test
+    public void FBupdateTask(){
+        // retrieve the task
+        Task task = Task.find("name = ?1", "nom task").first();
+
+        //modifies the task
+        Timestamp date = new Timestamp(new Date().getTime());
+        TaskService.updateTask(task, "nom task 2", "process task 2", "results task 2", " parameters task 2", date);
+
+        // Test
+        assertNotNull(task);
+        assertEquals("nom task 2", task.name);
+        assertEquals("process task 2", task.process);
+        assertEquals("results task 2", task.results);
+        assertEquals(" parameters task 2", task.parameters);
+        assertEquals(date , task.date);
+    }
+
+    @Test
+    public void FCdeleTask(){
+        // retrieve the task
+        Task task = Task.find("name = ?1", "nom task 2").first();
+
+        // delete the task
+        long idTask = task.id;
+        TaskService.deleteTask(task);
+
+        // Test
+        assertNull(TaskService.getTaskById(idTask));
+    }
+
+
+    /**********
+     * Status *
+     **********/
+
+    @Test
+    public void GAcreateAndRetrieveStatus() {
+        // Create a new status of a task and save it
+        Story story = Story.find("name = ?1", "nom story").first();
+        Timestamp date = new Timestamp(new Date().getTime());
+        Task task = TaskService.createTask("name task", "process task", "results",
+                "parameters", date, story);
+        long idStatus = StatusService.createStatus("label status", "action status", "remarks status",
+                date, "description version", "description sprint", task).id;
+
+        // Retrieve the task with it id
+        Status status = StatusService.getStatusById(idStatus);
+
+        // Test
+        assertNotNull(status);
+        assertEquals("label status", status.label);
+        assertEquals("action status", status.action);
+        assertEquals("remarks status", status.remarks);
+        assertEquals("description version", status.descriptionVersion);
+        assertEquals("description sprint", status.descriptionSprint);
+        assertEquals(date , status.date);
+    }
+
+
+    @Test
+    public void GBupdateStatus(){
+        // retrieve the status
+        Status status = Status.find("label = ?1", "label status").first();
+
+        //modifies the status
+        Timestamp date = new Timestamp(new Date().getTime());
+        StatusService.updateStatus(status, "label status", "action status", "remarks status",
+                date, "description version", "description sprint");
+
+        // Test
+        assertNotNull(status);
+        assertEquals("label status", status.label);
+        assertEquals("action status", status.action);
+        assertEquals("remarks status", status.remarks);
+        assertEquals("description version", status.descriptionVersion);
+        assertEquals("description sprint", status.descriptionSprint);
+        assertEquals(date , status.date);
+    }
+
+
+    @Test
+    public void GCdeleStatus(){
+        // retrieve the status
+        Status status = Status.find("label = ?1", "label status").first();
+
+        // delete the task
+        long idStatus = status.id;
+        StatusService.deleteStatus(status);
+
+        // Test
+        assertNull(StatusService.getStatusById(idStatus));
+    }
+
+    /**********
+     * Status *
+     **********/
+
+    @Test
+    public void HAcreateAndRetrieveUser() {
+        //create a new user save it
+        Date date = new Date();
+        long idUser = UserService.createUser("nom", "role", "email", "password", date).id;
+
+        // Retrieve the user with it id
+        User user = UserService.getUserById(idUser);
+
+        // Test
+        assertNotNull(user);
+        assertEquals("nom", user.name);
+        assertEquals("role", user.role);
+        assertEquals("email", user.email);
+        assertEquals("password", user.password);
+        assertEquals(date, user.date);
+    }
+
+    @Test
+    public void HBupdateUser() {
+        //retrieve a user
+        User user = User.find("name = ?1", "nom").first();
+
+        // update the user
+        Date date = new Date();
+        UserService.updateUser(user, "nom2", "role2", "email2", "password2", date);
+
+        // Test
+        assertNotNull(user);
+        assertEquals("nom2", user.name);
+        assertEquals("role2", user.role);
+        assertEquals("email2", user.email);
+        assertEquals("password2", user.password);
+        assertEquals(date, user.date);
+    }
+
+    @Test
+    public void HCdeleUser(){
+        //retrieve a user
+        User user = User.find("name = ?1", "nom2").first();
+
+        // delete the user
+        long idUser = user.id;
+        UserService.deleteUser(user);
+
+        // Test
+        assertNull(UserService.getUserById(idUser));
     }
 }

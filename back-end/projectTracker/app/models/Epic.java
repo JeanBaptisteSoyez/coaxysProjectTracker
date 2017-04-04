@@ -24,16 +24,15 @@ public class Epic extends Model {
     @JoinColumn(name = "idProject")
     public Project project;
 
-//    @OneToMany
-//    @JoinColumn(name = "idProject")
-//    public List<Story> stories;
+    @OneToMany(mappedBy = "epic")
+    public List<Story> stories;
 
 
     public Epic(String name, String description, Date date , Project project) {
         this.name = name;
         this.description = description;
         this.date = date;
-//        this.stories = new ArrayList<>();
+        this.stories = new ArrayList<>();
         this.project = project;
     }
 }

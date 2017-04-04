@@ -5,10 +5,22 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Status History</h2>
+<h2>Task Status History</h2>
+
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("index", "project")">Projets</a></li>
+    <li><a href="@Url.Action("index", "epic")">Epics</a></li>
+    <li><a href="@Url.Action("index", "Story")">Stories</a></li>
+    <li><a href="@Url.Action("index", "task")">Tasks</a></li>
+
+    <li class="active">Status</li>
+</ol>
 
 <table class="table">
     <tr>
+        <th>
+            Date
+        </th>
         <th>
             Status
         </th>
@@ -27,6 +39,9 @@
     {
         <tr>
             <td>
+                22/03/2017
+            </td>
+            <td>
                 @Html.DisplayFor(s => st.Type)
             </td>
             <td>
@@ -38,3 +53,6 @@
         </tr>
     }
 </table>
+<p>
+    @Html.ActionLink("Back to Tasks", "Index", "task")
+</p>
