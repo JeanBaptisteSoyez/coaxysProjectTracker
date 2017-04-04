@@ -8,6 +8,7 @@ import play.test.Fixtures;
 import play.test.UnitTest;
 import services.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -265,6 +266,7 @@ public class ServicesTest extends UnitTest {
     @Test
     public void ECdeleStory(){
         // retrieve the story
+        Epic epic = Epic.find("name = ?1", "nom epic").first();
         Story story = Story.find("name = ?1", "nom story 2").first();
 
         // delete the story
@@ -275,4 +277,59 @@ public class ServicesTest extends UnitTest {
         assertNull(EpicService.getEpicById(idStory));
     }
 
+
+    /********
+     * Task *
+     ********/
+
+    @Test
+    public void FAcreateAndRetrieveTask() {
+        // Create a new task of a story and save it
+        Epic epic = Epic.find("name = ?1", "nom epic").first();
+        Story story = StoryService.createStory("nom story", "description story", true, new Date(), epic);
+        Timestamp date = new Timestamp(new Date().getTime());
+        long idTask = TaskService.createTask("nom task", "process task", "results task", " parameters task", date, story).id;
+
+        // Retrieve the task with it id
+        Task task = TaskService.getTaskById(idTask);
+
+        // Test
+        assertNotNull(task);
+        assertEquals("nom task", task.name);
+        assertEquals("process task", task.process);
+        assertEquals("results task", task.results);
+        assertEquals(" parameters task", task.parameters);
+        assertEquals(date , task.date);
+    }
+
+    @Test
+    public void FBupdateTask(){
+        // retrieve the task
+        Task task = Task.find("name = ?1", "nom task").first();
+
+        //modifies the task
+        Timestamp date = new Timestamp(new Date().getTime());
+        TaskService.updateTask(task, "nom task 2", "process task 2", "results task 2", " parameters task 2", date);
+
+        // Test
+        assertNotNull(task);
+        assertEquals("nom task 2", task.name);
+        assertEquals("process task 2", task.process);
+        assertEquals("results task 2", task.results);
+        assertEquals(" parameters task 2", task.parameters);
+        assertEquals(date , task.date);
+    }
+
+    @Test
+    public void FCdeleTask(){
+        // retrieve the task
+        Task task = Task.find("name = ?1", "nom task 2").first();
+
+        // delete the task
+        long idTask = task.id;
+        TaskService.deleteTask(task);
+
+        // Test
+        assertNull(TaskService.getTaskById(idTask));
+    }
 }
