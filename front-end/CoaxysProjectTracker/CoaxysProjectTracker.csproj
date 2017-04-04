@@ -193,6 +193,7 @@
     <Compile Include="Repositories\StoryRepository.cs" />
     <Compile Include="Repositories\EpicRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
+    <Compile Include="Repositories\TaskRepository.cs" />
     <Compile Include="Services\Api.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -250,8 +251,10 @@
     <Content Include="Views\Project\Edit.cshtml" />
     <Content Include="Views\Story\Edit.cshtml" />
     <Content Include="Views\Task\Edit.cshtml" />
-    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\ListAllTasks.cshtml" />
     <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Task\Index.cshtml" />
+    <Content Include="Views\Task\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
