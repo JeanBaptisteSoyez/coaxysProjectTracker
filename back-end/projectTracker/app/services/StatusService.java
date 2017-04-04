@@ -38,4 +38,11 @@ public class StatusService {
     public static void deleteStatus(Status status) {
         status.delete();
     }
+
+
+    /********
+     * User *
+     ********/
+
+
 }
