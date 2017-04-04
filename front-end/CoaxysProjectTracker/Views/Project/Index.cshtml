@@ -1,4 +1,5 @@
-﻿@using  CoaxysProjectTracker.Models
+﻿@using CoaxysProjectTracker.Extensions
+@using CoaxysProjectTracker.Models
 @model List<Project>
 
 @{ 
@@ -10,6 +11,8 @@
 <ol class="breadcrumb">
     <li class="active">Projets</li>
 </ol>
+
+@Html.Raw(TempData.GetMessages())
 
 <div class="list list-project">
     <div class="row">
@@ -32,7 +35,7 @@
                     <p>@project.Description</p>
                     <p>
                         <a href="@Url.Action("index", "epic")" class="btn btn-primary" role="button">Epics</a> |
-                        <a href="@Url.Action("edit", "project", new { id = project.ID })" class="btn btn-primary" role="button">Modify</a> |
+                        <a href="@Url.Action("edit", "project", new { id = project.ID })" class="btn btn-primary modal-form" role="button">Modify</a> |
                         <a href="@Url.Action("ListAllTasks", "Task")" class="btn btn-primary" role="button">Tasks</a>
                     </p>
                 </div>

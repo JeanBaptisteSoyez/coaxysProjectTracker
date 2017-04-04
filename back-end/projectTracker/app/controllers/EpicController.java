@@ -1,9 +1,10 @@
 package controllers;
 
 import models.Epic;
+import play.data.validation.Validation;
 import play.mvc.Controller;
-import services.EpicService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,6 +20,24 @@ public class EpicController extends Controller {
             e.printStackTrace();
         }
         renderJSON(epics);
+    }
+
+    public static void createEpic(String name, String description, Date date) {
+        if (Validation.hasErrors()) {
+            params.flash();
+            Validation.keep();
+        }
+        Epic newEpic = new Epic();
+        newEpic.name = name;
+        newEpic.description = description;
+        newEpic.date = new Date();
+//        Epic epic = EpicService.createEpic("", "", );
+        renderJSON(newEpic);
+    }
+
+    public static void epic(Long id) {
+        Epic epic = Epic.findById(id);
+        renderJSON(epic);
     }
 
 }
