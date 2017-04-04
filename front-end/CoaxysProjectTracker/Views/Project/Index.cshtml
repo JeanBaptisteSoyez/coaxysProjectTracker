@@ -15,12 +15,13 @@
     <div class="row">
         <div class="col-md-4">
             <div class="list-item list-item-project new-project">
-                <a href="@Url.Action("create", "project")">
-                    <h3>
-                        <i class="glyphicon glyphicon-plus"></i>
-                        Nouveau projet
-                    </h3>
-                </a>
+             
+                    <a href="@Url.Action("create", "project")" class="modal-form">
+                        <h3>
+                            <i class="glyphicon glyphicon-plus"></i>
+                            Nouveau projet
+                        </h3>
+                    </a>
             </div>
         </div>
         @foreach (Project project in Model)
