@@ -12,11 +12,11 @@ public class EpicController extends Controller {
 
     public static void epics() {
         List<Epic> epics = null;
-        try {
+        /*try {
             epics = EpicService.epics();
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
         renderJSON(epics);
     }
 
