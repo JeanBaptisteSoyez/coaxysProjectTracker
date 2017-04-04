@@ -29,6 +29,9 @@ public class Project extends Model {
     @OneToMany(mappedBy = "project")
     public List<Version> versions;
 
+    @OneToMany(mappedBy = "project")
+    public List<Sprint> sprints;
+
 //    @ManyToMany
 //    public List<User> users;
 //
@@ -45,5 +48,6 @@ public class Project extends Model {
         this.description = description;
         this.date = date;
         this.versions = new ArrayList<Version>();
+        this.sprints = new ArrayList<Sprint>();
     }
 }

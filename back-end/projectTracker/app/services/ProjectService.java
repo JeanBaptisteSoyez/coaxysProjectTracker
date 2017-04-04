@@ -13,7 +13,6 @@ import java.util.List;
 public class ProjectService {
 
     public static Project createProject(String name, String description, Date date) {
-        List<Epic> epics = new ArrayList<>();
         Project project = new Project(name, description, date);
         project.save();
         return project;
@@ -31,15 +30,23 @@ public class ProjectService {
 
     public static void deleteProject(long idProject) {
         Project project = getProjectById(idProject);
+        deleteProject(project);
+    }
+
+    public static void deleteProject(Project project) {
         project.delete();
     }
 
-    public static Project updateProject(String oldName, String newName, String desccription, Date date) {
-        Project project = getProjectByName(oldName);
+    public static Project updateProject(Project project, String newName, String desccription, Date date) {
         project.name = newName;
         project.description = desccription;
         project.date = date;
         project.save();
         return project;
+    }
+
+    public static Project updateProject(String oldName, String newName, String desccription, Date date) {
+        Project project = getProjectByName(oldName);
+        return updateProject(project, newName, desccription, date);
     }
 }

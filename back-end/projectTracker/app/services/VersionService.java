@@ -20,4 +20,16 @@ public class VersionService {
     public static Version getVersionById(long idVersion) {
         return Version.findById(idVersion);
     }
+
+    public static void updateVersion(Version version, String description, int number, Date startDate, Date endDate) {
+        version.description = description;
+        version.number = number;
+        version.startDate = startDate;
+        version.endDate = endDate;
+        version.save();
+    }
+
+    public static void deleteVersion(Version version) {
+        version.delete();
+    }
 }
