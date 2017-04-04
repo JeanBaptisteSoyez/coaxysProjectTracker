@@ -32,16 +32,13 @@ public class Project extends Model {
     @OneToMany(mappedBy = "project")
     public List<Sprint> sprints;
 
+    @OneToMany(mappedBy = "project")
+    public List<Epic> epics;
+
 //    @ManyToMany
 //    public List<User> users;
 //
-//    @OneToMany(mappedBy = "project")
-//    public List<Epic> epics;
-//
-//    public Project(String name, List<Epic> epics) {
-//        this.name = name;
-//        this.epics = epics;
-//    }
+
 
     public Project(String name, String description, Date date) {
         this.name = name;
@@ -49,5 +46,6 @@ public class Project extends Model {
         this.date = date;
         this.versions = new ArrayList<Version>();
         this.sprints = new ArrayList<Sprint>();
+        this.epics = new ArrayList<>();
     }
 }

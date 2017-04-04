@@ -1,3 +1,4 @@
+import models.Epic;
 import models.Project;
 import models.Sprint;
 import models.Version;
@@ -8,6 +9,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import play.test.Fixtures;
 import play.test.UnitTest;
+import services.EpicService;
 import services.ProjectService;
 import services.SprintService;
 import services.VersionService;
@@ -153,7 +155,7 @@ public class ServicesTest extends UnitTest {
         Sprint sprint = Sprint.find("idProject = ?1", project.id).first();
 
 
-        //modifies the Version
+        //modifies the sprint
         Date date = new Date();
         SprintService.updateSprint(sprint, "description", 2, date, date);
 
@@ -167,12 +169,12 @@ public class ServicesTest extends UnitTest {
 
 
     @Test
-    public void CCdeleteVersion(){
+    public void CCdeleteSprint(){
         // retrieve the sprint of a given project
         Project project = ProjectService.getProjectByName("sprinter le sujet");
         Sprint sprint = Sprint.find("idProject = ?1", project.id).first();
 
-        // delete the project
+        // delete the sprint
         long idSprint = sprint.id;
         SprintService.deleteSprint(sprint);
 
@@ -180,4 +182,53 @@ public class ServicesTest extends UnitTest {
         assertNull(SprintService.getSprintById(idSprint));
     }
 
+
+    /********
+     * Epic *
+     ********/
+
+    @Test
+    public void DAcreateAndRetrieveEpic() {
+        // Create a new epic on a project and save it
+        Project project = ProjectService.createProject("diviser le projet", "On va avoir besoin d'un diviseur", new Date());
+        long idEpic = EpicService.createEpic("Epic une", "première epic", new Date(), project).id;
+
+        // Retrieve the epic with it id
+        Epic epic = EpicService.getEpicById(idEpic);
+
+        // Test
+        assertNotNull(epic);
+        assertEquals("Epic une", epic.name);
+    }
+
+    @Test
+    public void DBupdateEpic(){
+        // retrieve the epic of a given project
+        Project project = ProjectService.getProjectByName("diviser le projet");
+        Epic epic = Epic.find("idProject = ?1", project.id).first();
+
+        //modifies the sprint
+        Date date = new Date();
+        EpicService.updateEpic(epic, "Epic two", "deuxieme Epic", date);
+
+        // Test
+        assertNotNull(epic);
+        assertEquals("Epic two", epic.name);
+        assertEquals("deuxieme Epic", epic.description);
+        assertEquals(date, epic.date);
+    }
+
+    @Test
+    public void DCdeleteEpic(){
+        // retrieve the epic of a given project
+        Project project = ProjectService.getProjectByName("diviser le projet");
+        Epic epic = Epic.find("idProject = ?1", project.id).first();
+
+        // delete the sprint
+        long idEpic = epic.id;
+        EpicService.deleteEpic(epic);
+
+        // Test
+        assertNull(EpicService.getEpicById(idEpic));
+    }
 }

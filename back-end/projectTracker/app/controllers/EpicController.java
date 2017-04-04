@@ -2,6 +2,7 @@ package controllers;
 
 import models.Epic;
 import play.mvc.Controller;
+import services.EpicService;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class EpicController extends Controller {
     public static void epics() {
         List<Epic> epics = null;
         try {
-            epics = EpicService.epics();
+           epics = Epic.findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }

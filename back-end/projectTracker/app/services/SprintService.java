@@ -23,12 +23,13 @@ public class SprintService {
         return sprint;
     }
 
-    public static void updateSprint(Sprint sprint, String description, int number, Date startDate, Date endDate) {
+    public static Sprint updateSprint(Sprint sprint, String description, int number, Date startDate, Date endDate) {
         sprint.description = description;
         sprint.number = number;
         sprint.startDate = startDate;
         sprint.endDate = endDate;
         sprint.save();
+        return sprint;
     }
 
     public static void deleteSprint(Sprint sprint) {
