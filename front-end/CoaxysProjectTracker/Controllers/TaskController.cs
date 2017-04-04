@@ -31,8 +31,8 @@ namespace CoaxysProjectTracker.Controllers
 
         public async Task<ActionResult> Edit(int id)
         {
-            var task = await repository.GetTaskByID(id);
-            return View(task);
+           
+            return View();
         }
 
         public ActionResult Details()

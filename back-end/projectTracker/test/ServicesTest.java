@@ -395,4 +395,57 @@ public class ServicesTest extends UnitTest {
         // Test
         assertNull(StatusService.getStatusById(idStatus));
     }
+
+    /**********
+     * Status *
+     **********/
+
+    @Test
+    public void HAcreateAndRetrieveUser() {
+        //create a new user save it
+        Date date = new Date();
+        long idUser = UserService.createUser("nom", "role", "email", "password", date).id;
+
+        // Retrieve the user with it id
+        User user = UserService.getUserById(idUser);
+
+        // Test
+        assertNotNull(user);
+        assertEquals("nom", user.name);
+        assertEquals("role", user.role);
+        assertEquals("email", user.email);
+        assertEquals("password", user.password);
+        assertEquals(date, user.date);
+    }
+
+    @Test
+    public void HBupdateUser() {
+        //retrieve a user
+        User user = User.find("name = ?1", "nom").first();
+
+        // update the user
+        Date date = new Date();
+        UserService.updateUser(user, "nom2", "role2", "email2", "password2", date);
+
+        // Test
+        assertNotNull(user);
+        assertEquals("nom2", user.name);
+        assertEquals("role2", user.role);
+        assertEquals("email2", user.email);
+        assertEquals("password2", user.password);
+        assertEquals(date, user.date);
+    }
+
+    @Test
+    public void HCdeleUser(){
+        //retrieve a user
+        User user = User.find("name = ?1", "nom2").first();
+
+        // delete the user
+        long idUser = user.id;
+        UserService.deleteUser(user);
+
+        // Test
+        assertNull(UserService.getUserById(idUser));
+    }
 }

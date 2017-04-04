@@ -17,10 +17,10 @@ namespace CoaxysProjectTracker.Repositories
             return tasks;
         }
 
-        public async Task<Task> GetTaskByID(int id)
+        public async Task<Models.Task> GetTaskByID(int id)
         {
-            //var task = await Api.GetAsync<Models.Task>("taskX.json");
-            // add a file to server to show details
+            Models.Task task = await Api.GetAsync<Models.Task>("task1.json");
+            
             return null;
         }
 
