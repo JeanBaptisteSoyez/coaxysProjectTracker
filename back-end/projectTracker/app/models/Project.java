@@ -35,9 +35,9 @@ public class Project extends Model {
     @OneToMany(mappedBy = "project")
     public List<Epic> epics;
 
-//    @ManyToMany
-//    public List<User> users;
-//
+    @ManyToMany
+    public List<User> users;
+
 
 
     public Project(String name, String description, Date date) {

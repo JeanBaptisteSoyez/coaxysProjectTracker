@@ -264,7 +264,7 @@ public class ServicesTest extends UnitTest {
     }
 
     @Test
-    public void ECdeleStory(){
+    public void ECdeleteStory(){
         // retrieve the story
         Epic epic = Epic.find("name = ?1", "nom epic").first();
         Story story = Story.find("name = ?1", "nom story 2").first();
@@ -321,7 +321,7 @@ public class ServicesTest extends UnitTest {
     }
 
     @Test
-    public void FCdeleTask(){
+    public void FCdeleteTask(){
         // retrieve the task
         Task task = Task.find("name = ?1", "nom task 2").first();
 
@@ -384,7 +384,7 @@ public class ServicesTest extends UnitTest {
 
 
     @Test
-    public void GCdeleStatus(){
+    public void GCdeleteStatus(){
         // retrieve the status
         Status status = Status.find("label = ?1", "label status").first();
 
@@ -437,7 +437,7 @@ public class ServicesTest extends UnitTest {
     }
 
     @Test
-    public void HCdeleUser(){
+    public void HCdeleteUser(){
         //retrieve a user
         User user = User.find("name = ?1", "nom2").first();
 

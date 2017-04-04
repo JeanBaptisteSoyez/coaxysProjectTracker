@@ -1,0 +1,7 @@
+{
+  "id": 1,
+  "name": "Task 1",
+  "parameters": "1.	Dans le champ Email, saisir l'@mail 2.	Dans le champ Mot de passe, saisir le mot de passe",
+  "process": "Cliquer sur le bouton S'authentifier",
+  "result": "L'utilisateur est authentifié et redirigé vers la Vue d'ensemble"
+}
