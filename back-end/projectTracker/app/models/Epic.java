@@ -27,6 +27,7 @@ public class Epic extends Model {
     @OneToMany(mappedBy = "epic")
     public List<Story> stories;
 
+    public Epic() {}
 
     public Epic(String name, String description, Date date , Project project) {
         this.name = name;
