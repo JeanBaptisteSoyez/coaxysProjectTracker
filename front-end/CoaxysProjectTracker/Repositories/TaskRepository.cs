@@ -19,9 +19,9 @@ namespace CoaxysProjectTracker.Repositories
 
         public async Task<Task> GetTaskByID(int id)
         {
-            Task task = await Api.GetAsync<Task>("taskX.json");
-
-            return task;
+            //var task = await Api.GetAsync<Models.Task>("taskX.json");
+            // add a file to server to show details
+            return null;
         }
 
         public void CreateTask(string name, string param, string process, string result)
