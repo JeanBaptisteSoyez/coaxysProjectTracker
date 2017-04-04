@@ -38,9 +38,9 @@ namespace CoaxysProjectTracker.Controllers
         public ActionResult Details()
         { return View(); }
 
-        public async Task<ActionResult> ListAllTasksAsync()
+        public async Task<ActionResult> ListAllTasks()
         {
-            var tasks = await Api.GetAsync<List<Task>>("task.json");
+            var tasks = await Api.GetAsync<List<Models.Task>>("task.json");
             return View(tasks);
         }
     }
