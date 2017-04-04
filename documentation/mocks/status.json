@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "type": "KO_Bug",
+    "comment": "the function is out",
+    "attachment": "c:\\desktop\\image1.jpg"
+  },
+  {
+    "id": 2,
+    "type": "KO_Improper",
+    "comment": "the function is bullshit",
+    "attachment": "c:\\desktop\\image1.jpg"
+  },
+  {
+    "id": 3,
+    "type": "OK",
+    "comment": "",
+    "attachment": ""
+  }
+]

@@ -1,0 +1,27 @@
+﻿[
+  {
+    "id": 1,
+    "name": "Epic 1",
+    "description": "Description du Epic 1"
+  },
+  {
+    "id": 1,
+    "name": "Epic 2",
+    "description": "Description du Epic 2"
+  },
+  {
+    "id": 1,
+    "name": "Epic 3",
+    "description": "Description du Epic 3 un peu plus longue que les autres"
+  },
+  {
+    "id": 1,
+    "name": "Epic 4",
+    "description": "Description du Epic 4"
+  },
+  {
+    "id": 1,
+    "name": "Epic 5",
+    "description": "Description du Epic 5"
+  }
+]

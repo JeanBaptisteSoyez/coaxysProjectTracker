@@ -22,19 +22,22 @@ namespace CoaxysProjectTracker.Repositories
             return story;
         }
 
-        public void InsertStory()
+        public async Task<Story> InsertStory(Story story)
         {
-
+            Story newStory = await Api.GetAsync<Story>("story1.json");
+            return newStory;
         }
 
-        public void UpdateStory()
+        public async Task<Story> UpdateStory(Story story)
         {
-
+            Story updatedStory = await Api.GetAsync<Story>("story1.json");
+            return updatedStory;
         }
 
-        public void DeleteStory()
+        public async Task<Story> DeleteStory(Story story)
         {
-
+            Story deletedStory = await Api.GetAsync<Story>("story1.json");
+            return deletedStory;
         }
     }
 }

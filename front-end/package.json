@@ -9,6 +9,7 @@
   "author": "Camille Payen",
   "license": "None actually",
   "devDependencies": {
+    "babel-preset-es2015": "^6.24.0",
     "gulp": "~3.9.0",
     "gulp-babel": "^6.1.2",
     "gulp-concat": "^2.6.0",
