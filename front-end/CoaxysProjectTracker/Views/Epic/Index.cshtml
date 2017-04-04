@@ -1,4 +1,5 @@
-﻿@using CoaxysProjectTracker.Models
+﻿@using CoaxysProjectTracker.Extensions
+@using CoaxysProjectTracker.Models
 @model List<Epic>
 
 @{
@@ -11,6 +12,8 @@
     <li><a href="@Url.Action("index", "project")">Projets</a></li>
     <li class="active">Epics</li>
 </ol>
+
+@Html.Raw(TempData.GetMessages())
 
 <div class="list list-project">
     <div class="row">
@@ -32,7 +35,7 @@
                     <p>@epic.Description</p>
                     <p>
                         <a href="@Url.Action("index", "story")" class="btn btn-primary" role="button">Stories</a>
-                        <a href="@Url.Action("edit", "epic", new { id = epic.ID })" class="btn btn-primary" role="button">Modify</a>
+                        <a href="@Url.Action("edit", "epic", new { id = epic.ID })" class="btn btn-primary modal-form" role="button">Modify</a>
                     </p>
                 </div>
             </div>

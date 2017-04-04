@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using CoaxysProjectTracker.Attributes;
 using CoaxysProjectTracker.Repositories;
+using CoaxysProjectTracker.Extensions;
 
 namespace CoaxysProjectTracker.Controllers
 {
@@ -29,13 +30,49 @@ namespace CoaxysProjectTracker.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Create(Epic epic)
+        {
+            Epic resultEpic = await repository.InsertEpic(epic);
+
+            if (resultEpic != null)
+            {
+                TempData.AddMessage((int)TempDataMessageType.Success, "L'epic a bien été créée.");
+            }
+            else
+            {
+                TempData.AddMessage((int)TempDataMessageType.Danger, "Un problème est survenu. L'epic n'a pas été créée.");
+            }
+
+            return RedirectToAction("index");
         }
 
         public async Task<ActionResult> Edit(int id)
         {
             var epic = await repository.GetEpicByID(id);
-            return View(epic);
+            return PartialView(epic);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(Epic epic)
+        {
+            Epic resultEpic = await repository.UpdateEpic(epic);
+
+            if (resultEpic != null)
+            {
+                TempData.AddMessage((int)TempDataMessageType.Success, "L'epic a bien été mise à jour.");
+            }
+            else
+            {
+                TempData.AddMessage((int)TempDataMessageType.Danger, "Un problème est survenu. L'epic n'a pas été mise à jour.");
+            }
+
+            return RedirectToAction("index");
         }
 
     }
