@@ -2,61 +2,45 @@
 @model List<Task>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tasks";
 }
 
-<h2>Tasks List </h2>
+<h1>Tasks</h1>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<ol class="breadcrumb">
+    <li><a href="@Url.Action("index", "project")">Projets</a></li>
+    <li><a href="@Url.Action("index", "epic")">Epics</a></li>
+    <li><a href="@Url.Action("index", "Story")">Stories</a></li>
+    <li class="active">Tasks</li>
+</ol>
 
-<table class="table">
-    <tr>
-        <th>
-            Entry Parameters
-        </th>
-        <th>
-            Process
-        </th>
-        <th>
-           Result
-        </th>
-        <th>
-            Status
-        </th>
-        <th>
-            Comment
-        </th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EntryParameter)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Process)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Result)
-        </td>
-        <td>
-            <div class="btn-group" role="group" aria-label="...">
-                <button type="button" class="btn btn-default">OK</button>
-                <button type="button" class="btn btn-default">KO</button>
+
+<div class="list list-project">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="list-item list-item-project new-project">
+                <a data-toggle="modal" data-target="#main-modal" href="@Url.Action("create", "task")">
+                    <h3>
+                        <i class="glyphicon glyphicon-plus"></i>
+                        New Task
+                    </h3>
+                </a>
             </div>
-        </td>
-        <td>
-            
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID })          
-        </td>
-    </tr>
-}
-
-</table>
-<div>
-    @Html.ActionLink("Back to List", "Index")
+        </div>
+        @foreach (Task task in Model)
+        {
+            <div class="col-md-4">
+                <div class="list-item list-item-project">
+                    <h3>@task.Name</h3>
+                    <p>@task.Description</p>
+                    
+                    <p>
+                        <a href="@Url.Action("Details", "task")" class="btn btn-primary" role="button">Detail</a>
+                        <a href="@Url.Action("index", "status", new { id = task.ID })" class="btn btn-primary" role="button">History</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </div>
 </div>

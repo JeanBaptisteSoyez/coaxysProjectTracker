@@ -19,5 +19,11 @@ namespace CoaxysProjectTracker.Controllers
                 return View(status);
             
             }
+
+        public ActionResult  Update(int id)
+        {
+            
+            return View();
+        }
     }
 }
