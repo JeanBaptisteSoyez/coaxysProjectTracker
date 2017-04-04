@@ -2,6 +2,7 @@ package services;
 
 import models.*;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,31 +11,32 @@ import java.util.List;
  */
 public class TaskService {
 
-    public static Task createTask(String name, String process, String results, String parameters, int idStory){
-        List<Status> statuses = new ArrayList<>();
-        Story story = StoryService.getStoryById(idStory);
-        Task task = new Task(name, process, results, parameters, statuses, story);
+    public static Task createTask(String name, String process, String results, String parameters, Timestamp date, Story story) {
+        Task task = new Task(name, process, results, parameters, date, story);
         task.save();
         return task;
     }
 
-    public static Task getTaskById(int idTask){
-        Task task = Task.find("idTask = ?1", idTask).first();
-        return task;
+    public static Task getTaskById(long idTask) {
+        return Task.findById(idTask);
     }
 
-    public static Task updateTask(int idTask, String newName, String newProcess, String newResults, String newParameters){
-        Task task = getTaskById(idTask);
-        task.name = newName;
-        task.process = newProcess;
-        task.results = newResults;
-        task.parameters = newParameters;
+    public static Task updateTask(Task task, String name, String process, String results, String parameters, Timestamp date) {
+        task.name = name;
+        task.process = process;
+        task.results = results;
+        task.parameters = parameters;
+        task.date = date;
         task.save();
         return task;
     }
 
-    public static void deleteTask(int idTask){
-        Task task = getTaskById(idTask);
+    public static void deleteTask(Task task) {
         task.delete();
     }
+
+
+    /**********
+     * Status *
+     **********/
 }

@@ -4,6 +4,8 @@ import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,22 +17,22 @@ public class Epic extends Model {
     @Required
     @Column(nullable = false)
     public String name;
-
-    @OneToMany
-    @JoinColumn(name = "idProject")
-    public List<Story> stories;
+    public String description;
+    public Date date;
 
     @ManyToOne
+    @JoinColumn(name = "idProject")
     public Project project;
 
-    public Epic(String name, List<Story> stories, Project project) {
-        this.name = name;
-        this.stories = stories;
-        this.project = project;
-    }
+    @OneToMany(mappedBy = "epic")
+    public List<Story> stories;
 
-    public Epic(String name, List<Story> stories) {
+
+    public Epic(String name, String description, Date date , Project project) {
         this.name = name;
-        this.stories = stories;
+        this.description = description;
+        this.date = date;
+        this.stories = new ArrayList<>();
+        this.project = project;
     }
 }

@@ -4,6 +4,21 @@
 
 # Home page
 GET     /                                       Application.index
+GET     /users                                  UserController.users
+POST    /new-user                               UserController.createUser
+GET     /projects                               ProjectController.clientsProjects
+POST    /new-project                            ProjectController.createProject
+GET     /detail-project                         ProjectController.project
+GET     /sprints                                SprintController.sprints
+POST    /new-sprint                             SprintController.createSprint
+GET     /epics                                  EpicController.epics
+POST    /new-epic                               EpicController.createEpic
+GET     /stories                                StoryController.stories
+POST    /new-story                              StoryController.createStory
+GET     /tasks                                  TaskController.tasks
+POST    /new-task                               TaskController.createTask
+GET     /status-task                            StatusController.actualStatus
+POST    /status-task                            StatusController.changeStatus
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -4,6 +4,7 @@ import play.data.validation.Required;
 import play.db.jpa.Model;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -24,20 +25,22 @@ public class Task extends Model {
     @Required
     @Column(nullable = false)
     public String parameters;
-
-    @OneToMany
-    public List<Status> statuses;
+    public Timestamp date;
 
     @ManyToOne
+    @JoinColumn(name = "idStory")
     public Story story;
 
-    public Task(String name, String process, String results, String parameters, List<Status> statuses, Story story) {
+    //
+//    @OneToMany
+//    public List<Status> statuses;
+
+    public Task(String name, String process, String results, String parameters, Timestamp date, Story story) {
         this.name = name;
         this.process = process;
         this.results = results;
         this.parameters = parameters;
-        this.statuses = statuses;
+        this.date = date;
         this.story = story;
     }
-
 }

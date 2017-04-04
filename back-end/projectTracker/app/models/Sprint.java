@@ -3,9 +3,7 @@ package models;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
@@ -15,26 +13,20 @@ import java.util.List;
 @Entity
 public class Sprint extends Model {
 
-    @Required
-    @Column(nullable = false)
-    public int number;
-    @Required
-    @Column(nullable = false)
     public Date startDate;
     public Date endDate;
+    public String description;
+    public int number;
 
-    @OneToMany
-    public List<Status> statuses;
+    @ManyToOne
+    @JoinColumn(name = "idProject")
+    public Project project;
 
-    public Sprint(){
-        //TO DO
-    }
-
-    public Sprint(int number, Date startDate, Date endDate, List<Status> statuses) {
-        this.number = number;
+    public Sprint(Date startDate, Date endDate, String description, int number, Project project) {
         this.startDate = startDate;
         this.endDate = endDate;
-        this.statuses = statuses;
+        this.description = description;
+        this.number = number;
+        this.project = project;
     }
-
 }

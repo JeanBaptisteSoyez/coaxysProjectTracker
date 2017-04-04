@@ -2,44 +2,33 @@ package services;
 
 import models.Epic;
 import models.Project;
-import models.Story;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 /**
  * Created by formation04 on 30/03/17.
  */
 public class EpicService {
 
-    public static Epic createEpic(String name, int idProject) {
-        Project project = ProjectService.getProjectById(idProject);
-        List<Story> stories = new ArrayList<>();
-        Epic epic = new Epic(name, stories, project);
+    public static Epic createEpic(String name, String description, Date date, Project project) {
+        Epic epic = new Epic(name, description, date, project);
         epic.save();
         return epic;
     }
 
-    public static Epic getEpicByName(String name) {
-        Epic epic = Epic.find("name = ?1", name).first();
-        return epic;
+    public static Epic getEpicById(long idEpic) {
+        return Epic.findById(idEpic);
     }
 
-    public static Epic getEpicById(int idEpic){
-        Epic epic = Epic.find("idEpic = ?1", idEpic).first();
-        return epic;
-    }
-
-    public static Epic updateEpic(int idEpic, String newName) {
-        Epic epic = getEpicById(idEpic);
-        epic.name = newName;
+    public static Epic updateEpic(Epic epic, String name, String description, Date date) {
+        epic.name = name;
+        epic.description = description;
+        epic.date = date;
         epic.save();
         return epic;
     }
 
-    public static void deleteEpic(int idEpic) {
-        Epic epic = getEpicById(idEpic);
+    public static void deleteEpic(Epic epic) {
         epic.delete();
     }
-
 }
